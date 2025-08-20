@@ -122,6 +122,14 @@ class="toc-section-number">7</span> <strong>The First Clash!
 <li><a href="#the-grand-melee" id="toc-the-grand-melee"><span
 class="toc-section-number">8</span> <strong>The Grand Melee
 💥</strong></a></li>
+<li><a href="#unit-9-the-archetype-the-summoning-spell"
+id="toc-unit-9-the-archetype-the-summoning-spell"><span
+class="toc-section-number">9</span> <strong>Unit 9: The Archetype &amp;
+The Summoning Spell</strong></a></li>
+<li><a href="#unit-10-the-sentinels-shield-protecting-your-code"
+id="toc-unit-10-the-sentinels-shield-protecting-your-code"><span
+class="toc-section-number">10</span> <strong>Unit 10: The Sentinel’s
+Shield (Protecting Your Code) 🛡️</strong></a></li>
 </ul>
 </nav>
 <h2 data-number="1" id="summoning-your-first-creature"><span
@@ -1466,5 +1474,287 @@ to pick a target (<code>valid_targets[1]</code>) will result in
 <code>if #valid_targets &gt; 0 then ...</code> block.</li>
 </ul></li>
 </ul>
+<h2 data-number="9" id="unit-9-the-archetype-the-summoning-spell"><span
+class="header-section-number">9</span> <strong>Unit 9: The Archetype
+&amp; The Summoning Spell</strong></h2>
+<hr />
+<h3 data-number="9.1" id="the-story-so-far-7"><span
+class="header-section-number">9.1</span> <strong>The Story So
+Far…</strong></h3>
+<p>You’ve built an incredible “Grand Melee”! It’s a full, chaotic battle
+where every card gets a turn, and the logic is smart enough to handle
+defeated cards correctly. The game feels more real than ever.</p>
+<p>But what happens when the dust settles? A real game doesn’t just end
+after one round. The survivors should get ready for the next fight. This
+brings up some fascinating new problems that will require some truly
+powerful magic to solve.</p>
+<h3 data-number="9.2"
+id="the-mission-what-well-accomplish-today-8"><span
+class="header-section-number">9.2</span> <strong>The Mission: What We’ll
+Accomplish Today</strong></h3>
+<p>Our mission is to build the “post-battle” phase of our game. By the
+end of this unit, our program will not only run a full melee, but
+also:</p>
+<ol type="1">
+<li>Provide a detailed “Damage Report” showing how much health each
+surviving card lost.</li>
+<li>Gather the surviving cards and prepare a new, fully-healed hand,
+ready for the next round.</li>
+</ol>
+<hr />
+<h3 data-number="9.3" id="quest-a-the-damage-report"><span
+class="header-section-number">9.3</span> <strong>Quest A: The Damage
+Report 📜</strong></h3>
+<p>Let’s start by making our end-of-round report more interesting.
+Instead of just showing a survivor’s remaining health, let’s also show
+how much damage they took.</p>
+<p><strong>The Problem:</strong> Wait, we have a problem. When a card is
+attacked, our code does this:
+<code>target.life = target.life - attacker.attack</code>. We are
+changing the <code>life</code> value directly. By the end of the round,
+the original health value is gone forever! How can we possibly calculate
+the damage taken if we don’t remember what the health was at the
+start?</p>
+<p><strong>A New Tactic: Archetypes and Summoned Creatures</strong> To
+solve this, we need to think about our cards in a new way. Let’s decide
+that from now on, there are two forms of every card:</p>
+<ul>
+<li><strong>The Archetype:</strong> This is the card’s perfect, original
+essence. Its <code>life</code> value is its <strong>maximum</strong>
+health. Archetypes are like the master blueprints in a grand
+library—they are never changed or damaged.</li>
+<li><strong>The Summoned Creature:</strong> When a card is brought into
+a battle, it’s a temporary, physical version of its archetype. This is
+the version that takes damage.</li>
+</ul>
+<p>If we do this, we can always look at a damaged, summoned creature and
+compare it to its original archetype to see how much health it has lost.
+But that leads to the next question… how do we create a “Summoned
+Creature” from an “Archetype”?</p>
+<p><strong>The Tool for Summoning: The <code>pairs()</code>
+Loop</strong> We need to make a copy. But writing
+<code>new_card.name = old_card.name</code>,
+<code>new_card.life = old_card.life</code>, etc., for every single stat
+is clumsy. What if we add an “armor” stat later? We’d have to remember
+to update our copy code.</p>
+<p>There’s a better way. We can use a special loop called
+<strong><code>for ... in pairs()</code></strong> that automatically
+visits every key-value pair in a table, no matter what they’re
+named.</p>
+<p><strong>Analogy:</strong> Think of a card’s table as a <strong>magic
+bag of holding</strong>. <code>pairs()</code> is the spell you use to
+pull out every single item from the bag, one by one. For each item, you
+get its label (<code>key</code>, e.g., “speed”) and the item itself
+(<code>value</code>, e.g., 5).</p>
+<p><strong>The Final Piece: Names Point to Things</strong> Before we
+build our summoning spell, there’s one crucial idea. When we create our
+summoned creature, we need it to remember its original archetype. We’ll
+do this by adding a new property:
+<code>summoned_creature.archetype = archetype_card</code>. To understand
+why this works, think of variables as <strong>names that point to
+things</strong>.</p>
+<p><strong>Analogy:</strong> Imagine a single, real-world object, like a
+<strong>cat</strong> 🐈.</p>
+<ul>
+<li>You and your sibling can both have a name for it:
+<code>my_cat</code> and <code>our_pet</code>. Both names point to the
+<em>same cat</em>.</li>
+<li>If you put a hat on the cat using your name for it
+(<code>my_cat.has_hat = true</code>), your sibling sees the change via
+their name (<code>our_pet.has_hat</code> is now also <code>true</code>).
+You changed the <em>thing</em>.</li>
+<li>This is what we’ll do. The <code>summoned_creature.archetype</code>
+name will point to the <em>real, original archetype cat</em>.</li>
+</ul>
+<p><strong>Let’s build the <code>summon()</code> function!</strong></p>
+<ol type="1">
+<li><strong>Create the function:</strong>
+<code>function summon(archetype_card) ... end</code>.</li>
+<li><strong>The Body:</strong> Inside, create an empty table for the
+<code>summoned_creature</code>. Use a
+<code>for key, value in pairs(archetype_card) do ... end</code> loop.
+Inside the loop, copy each property:
+<code>summoned_creature[key] = value</code>.</li>
+<li><strong>The Link:</strong> After the loop, create the link back to
+the original:
+<code>summoned_creature.archetype = archetype_card</code>.</li>
+<li><strong>Return:</strong> <code>return summoned_creature</code>.</li>
+</ol>
+<p><strong>Now, update your game!</strong></p>
+<ol type="1">
+<li>Change your <code>cards.lua</code> or card generation list to be the
+“Codex of Archetypes.”</li>
+<li>When you deal the <code>player_hand</code> and
+<code>computer_hand</code>, use your new <code>summon()</code> function
+to create summoned creatures for the battle.</li>
+<li>Run the Grand Melee logic.</li>
+<li>In the Aftermath step, for each <code>survivor</code>, calculate
+damage:
+<code>local damage_taken = survivor.archetype.life - survivor.life</code>.</li>
+<li>Print the new report:
+<code>print(survivor.name .. " survived with " .. survivor.life .. " HP (" .. damage_taken .. " damage taken).")</code>.</li>
+</ol>
+<hr />
+<h3 data-number="9.4" id="quest-b-preparing-for-the-next-round"><span
+class="header-section-number">9.4</span> <strong>Quest B: Preparing for
+the Next Round 🔄</strong></h3>
+<p>The battle is over, and the damage report is done. What’s next? A new
+round! But we can’t send these damaged survivors back into the fight. We
+need fresh ones.</p>
+<p><strong>The Problem:</strong> We have a list of survivors, but they
+are all battle-worn and damaged. How do we prepare a new hand of
+fully-healed creatures for the next round?</p>
+<p><strong>The Solution:</strong> This is easy now! Since each survivor
+has a “shortcut” back to its perfect archetype
+(<code>survivor.archetype</code>), we can simply use that archetype to
+summon a brand-new, fully-healed copy.</p>
+<p><strong>The Task:</strong></p>
+<ol type="1">
+<li>After the “Damage Report” is printed, create a new empty table,
+<code>player_hand_for_next_round</code>.</li>
+<li>Loop through the (damaged) <code>player_hand</code> from the
+battle.</li>
+<li>Inside the loop, for each <code>card</code> that survived
+(<code>card.life &gt; 0</code>), summon a fresh copy from its archetype:
+<code>lua     -- Inside your loop over the survivors...     local fresh_copy = summon(card.archetype)     table.insert(player_hand_for_next_round, fresh_copy)</code></li>
+<li>After the loop, print the contents of
+<code>player_hand_for_next_round</code> using your
+<code>display_card</code> function.</li>
+</ol>
+<p><strong>The Payoff:</strong> You will see a list of only the
+surviving creatures, all restored to their maximum health, proving they
+are ready for another fight. This demonstrates the full, powerful
+lifecycle: <strong>Archetype -&gt; Summon -&gt; Damage -&gt; Use
+Archetype to Re-Summon</strong>.</p>
+<h2 data-number="10"
+id="unit-10-the-sentinels-shield-protecting-your-code"><span
+class="header-section-number">10</span> <strong>Unit 10: The Sentinel’s
+Shield (Protecting Your Code) 🛡️</strong></h2>
+<hr />
+<h3 data-number="10.1" id="the-story-so-far-8"><span
+class="header-section-number">10.1</span> <strong>The Story So
+Far…</strong></h3>
+<p>You’ve built a truly complex and exciting “Grand Melee”! But with
+this complexity comes a new danger. If you change one part of the code,
+how can you be sure you didn’t accidentally break something else?
+Checking everything by hand after every change is slow and impossible.
+It’s time to build a sentinel—an automated guard for your code.</p>
+<h3 data-number="10.2"
+id="the-mission-what-well-accomplish-today-9"><span
+class="header-section-number">10.2</span> <strong>The Mission: What
+We’ll Accomplish Today</strong></h3>
+<p>Our mission is to pause on adding new game features and instead build
+a “test suite”—a separate script that automatically runs simulations and
+checks if our game logic behaves exactly as we promise it will. To do
+this, we’ll first learn how to properly organize our code into
+“libraries” and “scripts.”</p>
+<h3 data-number="10.3" id="the-spellbook-the-art-of-guardianship"><span
+class="header-section-number">10.3</span> <strong>The Spellbook: The Art
+of Guardianship</strong></h3>
+<p><strong>1. Libraries vs. Scripts (The Spellbook vs. The
+Incantation)</strong></p>
+<p>This is the most important organizational idea in programming. Not
+all <code>.lua</code> files are the same.</p>
+<p><strong>Analogy:</strong> A <strong>library</strong> is like a
+<strong>spellbook</strong>. It’s a collection of powerful spells
+(functions) and definitions (data). Sitting on the shelf, a spellbook
+doesn’t <em>do</em> anything. Its job is to simply be a source of
+knowledge. A <strong>script</strong> is like an
+<strong>incantation</strong> or a ritual. It’s a sequence of actions
+that <em>uses</em> the spellbook (<code>require</code>) to actually make
+something happen.</p>
+<ul>
+<li><strong>Libraries (<code>game_logic.lua</code>,
+<code>cards.lua</code>):</strong> These files should only contain
+definitions. They define functions and data and, at the very end,
+<code>return</code> a table containing those tools. A library file
+should <strong>never</strong> run the game or print things on its
+own.</li>
+<li><strong>Scripts (<code>main.lua</code>,
+<code>tests.lua</code>):</strong> These are the “do-ers.” Their job is
+to <code>require</code> the libraries and then call the functions to
+perform a task, whether it’s playing the game or testing it.</li>
+</ul>
+<p>By separating our code this way, we can <code>require</code> our
+<code>game_logic.lua</code> spellbook in our test file without worrying
+about the whole game starting up unexpectedly.</p>
+<p><strong>2. The “Why” of Testing: A Promise to the Future</strong></p>
+<p>An automated test is a <strong>contract</strong> or a
+<strong>promise</strong> you make about your code. When you test your
+<code>attack</code> function, you are promising: “I guarantee this
+function will always reduce the target’s life by the correct amount.”
+This protects your future self from breaking your game’s most important
+rules.</p>
+<p><strong>3. What Should We Test? Protecting the Crown
+Jewels</strong></p>
+<p>Deciding <em>what</em> to test is a conscious effort. We focus on the
+“crown jewels”: the core, stable rules of our game. The
+<code>attack</code> logic is a perfect example. It’s a fundamental rule
+that many future features will depend on. We test it to ensure we’re
+building on a solid foundation.</p>
+<p><strong>4. <code>assert()</code> (The Sentinel’s Alarm)</strong></p>
+<p>This is our simple tool for checking promises.
+<code>assert(condition, "message")</code> is a silent guardian.</p>
+<ul>
+<li>If the <code>condition</code> is <code>true</code>, it does
+nothing.</li>
+<li>If the <code>condition</code> is <code>false</code>, it stops the
+program and shouts the error <code>message</code>.</li>
+</ul>
+<h3 data-number="10.4" id="your-quest-forging-the-shield"><span
+class="header-section-number">10.4</span> <strong>Your Quest: Forging
+the Shield</strong></h3>
+<p><strong>Quest A: The Single-Strike Test</strong> Let’s start by
+testing our most important “crown jewel.”</p>
+<ol type="1">
+<li><strong>Refactor into a Library:</strong> Make sure your
+<code>game_logic.lua</code> file is a proper library. It should define
+the <code>attack</code> function and <code>return</code> it in a table.
+It should not run any game logic itself.</li>
+<li><strong>Create the Test Script:</strong> Create a new file,
+<code>tests.lua</code>.</li>
+<li><strong>Setup:</strong> In <code>tests.lua</code>,
+<code>require</code> your <code>game_logic.lua</code> library.</li>
+<li><strong>Craft the Actors:</strong> Create two simple, predictable
+card tables by hand.
+<code>lua     local knight = { name = "Test Knight", attack = 7, life = 20 }     local goblin = { name = "Test Goblin", attack = 3, life = 10 }</code></li>
+<li><strong>Execute and Assert:</strong> Call the function and assert
+the promise about the outcome.
+<code>game_logic.attack(knight, goblin)</code>
+<code>assert(goblin.life == 3, "Single-strike test failed: Goblin's final health was not 3!")</code></li>
+<li><strong>Run the Test:</strong> Run <code>lua tests.lua</code>. If it
+passes silently, the first part of your shield is in place.</li>
+</ol>
+<p><strong>Quest B: The Full Melee Simulation</strong> Now for the
+bigger test. To test the entire round, we need to make sure that logic
+also lives in our library.</p>
+<ol type="1">
+<li><strong>The Refactor:</strong> Create a new function in your
+<code>game_logic.lua</code> library called
+<code>run_round(player_cards, computer_cards)</code>.
+<strong>Cut</strong> the entire Grand Melee logic from
+<code>main.lua</code> and <strong>paste</strong> it into this new
+function. The function should <code>return</code> the final state of the
+two hands. Your <code>main.lua</code> should now be a pure
+<strong>script</strong>—it just requires libraries, generates random
+hands, and then calls <code>game_logic.run_round()</code>.</li>
+<li><strong>Craft the Battlefield:</strong> Back in
+<code>tests.lua</code>, create two full, hand-crafted 3-card hands
+designed to have a predictable outcome.</li>
+<li><strong>Execute the Simulation:</strong> Call your new round
+function:
+<code>local final_player_hand, final_computer_hand = game_logic.run_round(test_player_hand, test_computer_hand)</code>.</li>
+<li><strong>Assert the Final State:</strong> Make a series of promises
+about what the battlefield should look like after the dust settles.
+<code>lua     print("Running full melee simulation test...")     assert(final_player_hand[1].life == 12, "Player Card 1 failed health check.")     assert(final_computer_hand[2].life &lt;= 0, "Computer Card 2 should have been defeated.")     print("Full melee simulation passed!")</code></li>
+</ol>
+<h3 data-number="10.5" id="the-payoff"><span
+class="header-section-number">10.5</span> <strong>The
+Payoff</strong></h3>
+<p>By building this sentinel’s shield and organizing your code into
+libraries and scripts, you’ve adopted two of the most professional
+habits in programming. You can now change your game with confidence,
+knowing your sentinel will instantly warn you if you break one of your
+core promises.</p>
 </body>
 </html>
