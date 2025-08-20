@@ -1011,7 +1011,7 @@ We need a loop that will run for each of the 6 "turn slots" in the round. A simp
 * **The program crashes trying to attack.**
     * **Check:** Are you checking if there are any `valid_targets` before trying to attack? If all opponents are defeated, your `valid_targets` list will be empty, and trying to pick a target (`valid_targets[1]`) will result in `nil`. Make sure your attack logic is inside an `if #valid_targets > 0 then ...` block.
 
-## **Unit 9: The Archetype & The Summoning Spell**
+## **The Archetype & The Summoning Spell**
 
 -----
 
@@ -1103,7 +1103,7 @@ This is easy now\! Since each survivor has a "shortcut" back to its perfect arch
 **The Payoff:** You will see a list of only the surviving creatures, all restored to their maximum health, proving they are ready for another fight. This demonstrates the full, powerful lifecycle: **Archetype -\> Summon -\> Damage -\> Use Archetype to Re-Summon**.
 
 
-## **Unit 10: The Sentinel's Shield (Protecting Your Code) 🛡️**
+## **The Sentinel's Shield (Protecting Your Code) 🛡️**
 
 -----
 
