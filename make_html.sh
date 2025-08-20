@@ -1,4 +1,4 @@
 #!/bin/bash
-pandoc --number-sections --toc=true \
+pandoc --number-sections --toc=true --toc-depth=2\
     --metadata title="Code & Sorcery: A Lua Card Game Quest" \
-    -s -c style.css README.md -o html/cards.html
+    -s -c style.css README.md -o index.html
