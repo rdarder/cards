@@ -95,51 +95,41 @@
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a href="#code-sorcery-a-lua-card-game-quest"
-id="toc-code-sorcery-a-lua-card-game-quest"><span
-class="toc-section-number">1</span> Code &amp; Sorcery: A Lua Card Game
-Quest</a>
-<ul>
 <li><a href="#summoning-your-first-creature"
 id="toc-summoning-your-first-creature"><span
-class="toc-section-number">1.1</span> <strong>Summoning Your First
+class="toc-section-number">1</span> <strong>Summoning Your First
 Creature!</strong></a></li>
 <li><a href="#crafting-the-cards-soul"
 id="toc-crafting-the-cards-soul"><span
-class="toc-section-number">1.2</span> <strong>Crafting the Card’s
+class="toc-section-number">2</span> <strong>Crafting the Card’s
 Soul</strong></a></li>
 <li><a href="#assembling-your-army" id="toc-assembling-your-army"><span
-class="toc-section-number">1.3</span> <strong>Assembling Your
+class="toc-section-number">3</span> <strong>Assembling Your
 Army</strong></a></li>
 <li><a href="#automating-your-army" id="toc-automating-your-army"><span
-class="toc-section-number">1.4</span> <strong>Automating Your Army
+class="toc-section-number">4</span> <strong>Automating Your Army
 🔁</strong></a></li>
 <li><a href="#creating-reusable-spells"
 id="toc-creating-reusable-spells"><span
-class="toc-section-number">1.5</span> <strong>Creating Reusable Spells
+class="toc-section-number">5</span> <strong>Creating Reusable Spells
 🪄</strong></a></li>
 <li><a href="#the-random-card-forge"
-id="toc-the-random-card-forge"><span
-class="toc-section-number">1.6</span> <strong>The Random Card Forge
-🏭</strong></a></li>
+id="toc-the-random-card-forge"><span class="toc-section-number">6</span>
+<strong>The Random Card Forge 🏭</strong></a></li>
 <li><a href="#the-first-clash" id="toc-the-first-clash"><span
-class="toc-section-number">1.7</span> <strong>The First Clash!
+class="toc-section-number">7</span> <strong>The First Clash!
 ⚔️</strong></a></li>
 <li><a href="#the-grand-melee" id="toc-the-grand-melee"><span
-class="toc-section-number">1.8</span> <strong>The Grand Melee
+class="toc-section-number">8</span> <strong>The Grand Melee
 💥</strong></a></li>
-</ul></li>
 </ul>
 </nav>
-<h1 data-number="1" id="code-sorcery-a-lua-card-game-quest"><span
-class="header-section-number">1</span> Code &amp; Sorcery: A Lua Card
-Game Quest</h1>
-<h2 data-number="1.1" id="summoning-your-first-creature"><span
-class="header-section-number">1.1</span> <strong>Summoning Your First
+<h2 data-number="1" id="summoning-your-first-creature"><span
+class="header-section-number">1</span> <strong>Summoning Your First
 Creature!</strong></h2>
 <hr />
-<h3 data-number="1.1.1" id="lets-get-started"><span
-class="header-section-number">1.1.1</span> <strong>Let’s Get
+<h3 data-number="1.1" id="lets-get-started"><span
+class="header-section-number">1.1</span> <strong>Let’s Get
 Started!</strong></h3>
 <p>Hey! Welcome to your first step in becoming a game creator. Every
 huge, amazing game you’ve ever played started exactly where you are now:
@@ -149,10 +139,9 @@ battles, we need a creature to fight. So, today’s mission is to reach
 into the digital world and summon our very first creature. We’ll decide
 what it is, what its powers are, and teach the computer how to show it
 to us.</p>
-<h3 data-number="1.1.2"
-id="the-mission-what-well-accomplish-today"><span
-class="header-section-number">1.1.2</span> <strong>The Mission: What
-We’ll Accomplish Today</strong></h3>
+<h3 data-number="1.2" id="the-mission-what-well-accomplish-today"><span
+class="header-section-number">1.2</span> <strong>The Mission: What We’ll
+Accomplish Today</strong></h3>
 <p>By the end of this session, we will have a simple program that:</p>
 <ol type="1">
 <li>Defines a single creature card with a name, life points, attack
@@ -166,8 +155,8 @@ Name: Goblin Grunt
 Life: 5
 Attack: 2
 Speed: 3</code></pre>
-<h3 data-number="1.1.3" id="the-spellbook-new-tools-well-learn"><span
-class="header-section-number">1.1.3</span> <strong>The Spellbook: New
+<h3 data-number="1.3" id="the-spellbook-new-tools-well-learn"><span
+class="header-section-number">1.3</span> <strong>The Spellbook: New
 Tools We’ll Learn</strong></h3>
 <p>To summon our creature, we need to learn a few basic “spells” in
 Lua.</p>
@@ -227,9 +216,9 @@ and they are for humans only!</p>
 <div class="sourceCode" id="cb7"><pre
 class="sourceCode lua"><code class="sourceCode lua"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- This variable stores the player&#39;s health.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">playerHealth</span> <span class="op">=</span> <span class="dv">100</span> <span class="co">-- Start with full health</span></span></code></pre></div>
-<h3 data-number="1.1.4"
+<h3 data-number="1.4"
 id="the-training-grounds-practice-your-spells"><span
-class="header-section-number">1.1.4</span> <strong>The Training Grounds:
+class="header-section-number">1.4</span> <strong>The Training Grounds:
 Practice Your Spells</strong></h3>
 <p>Before we summon the real creature, let’s warm up with these small
 exercises. Try writing them in a separate test file.</p>
@@ -251,9 +240,9 @@ to display a message like
 <li>Use <code>print()</code> to announce the spell and its power, for
 example: <code>Casting Fireball! It does 8 damage!</code>.</li>
 </ul>
-<h3 data-number="1.1.5" id="your-quest-summon-the-creature"><span
-class="header-section-number">1.1.5</span> <strong>Your Quest: Summon
-the Creature!</strong></h3>
+<h3 data-number="1.5" id="your-quest-summon-the-creature"><span
+class="header-section-number">1.5</span> <strong>Your Quest: Summon the
+Creature!</strong></h3>
 <p>Alright, you’re ready. Your mission is to write a Lua program from
 scratch that accomplishes our goal.</p>
 <p><strong>Instructions:</strong></p>
@@ -270,9 +259,9 @@ the card’s stats neatly. Try to match the format we showed at the
 beginning of the mission.</li>
 </ol>
 <p>Go for it! I’ll be here to help if you get stuck.</p>
-<h3 data-number="1.1.6"
+<h3 data-number="1.6"
 id="the-troubleshooting-scroll-when-spells-go-wrong"><span
-class="header-section-number">1.1.6</span> <strong>The Troubleshooting
+class="header-section-number">1.6</span> <strong>The Troubleshooting
 Scroll: When Spells Go Wrong</strong></h3>
 <p>Even the best wizards mess up a spell sometimes. If your code doesn’t
 run, you’ll see an error message. Here are a few common ones and what
@@ -307,12 +296,12 @@ for that.</li>
 <code>..</code> to glue strings together, not <code>+</code>.</li>
 </ul></li>
 </ul>
-<h2 data-number="1.2" id="crafting-the-cards-soul"><span
-class="header-section-number">1.2</span> <strong>Crafting the Card’s
+<h2 data-number="2" id="crafting-the-cards-soul"><span
+class="header-section-number">2</span> <strong>Crafting the Card’s
 Soul</strong></h2>
 <hr />
-<h3 data-number="1.2.1" id="the-story-so-far"><span
-class="header-section-number">1.2.1</span> <strong>The Story So
+<h3 data-number="2.1" id="the-story-so-far"><span
+class="header-section-number">2.1</span> <strong>The Story So
 Far…</strong></h3>
 <p>Awesome work on summoning your first creature! You taught the
 computer to remember four different things about it: its name, life,
@@ -326,10 +315,10 @@ we wanted to make a second card, we’d need four <em>more</em> variables
 confusing fast!</p>
 <p>Today, we’re going to fix that. We’re going to give our card a
 “soul”—a single container that holds all its information together.</p>
-<h3 data-number="1.2.2"
+<h3 data-number="2.2"
 id="the-mission-what-well-accomplish-today-1"><span
-class="header-section-number">1.2.2</span> <strong>The Mission: What
-We’ll Accomplish Today</strong></h3>
+class="header-section-number">2.2</span> <strong>The Mission: What We’ll
+Accomplish Today</strong></h3>
 <p>By the end of this session, our program will produce the
 <strong>exact same output as before</strong>, but our code will be much
 cleaner and smarter. We will:</p>
@@ -342,8 +331,8 @@ structure.</li>
 <p>The big change isn’t what the program <em>does</em>, but <em>how</em>
 our code is written. This is a huge step in programming: learning to
 write clean, organized code.</p>
-<h3 data-number="1.2.3" id="the-spellbook-new-tools-well-learn-1"><span
-class="header-section-number">1.2.3</span> <strong>The Spellbook: New
+<h3 data-number="2.3" id="the-spellbook-new-tools-well-learn-1"><span
+class="header-section-number">2.3</span> <strong>The Spellbook: New
 Tools We’ll Learn</strong></h3>
 <p>We only need one new, super-powerful tool for this mission.</p>
 <p><strong>1. Tables: The Ultimate Organizer</strong></p>
@@ -386,9 +375,9 @@ class="sourceCode lua"><code class="sourceCode lua"><span id="cb10-1"><a href="#
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- We can even use it with our concatenation spell from last time!</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span><span class="op">(</span><span class="st">&quot;The creature&#39;s attack power is: &quot;</span> <span class="op">..</span> <span class="va">goblin_grunt</span><span class="op">.</span><span class="va">attack</span><span class="op">)</span></span></code></pre></div>
-<h3 data-number="1.2.4"
+<h3 data-number="2.4"
 id="the-training-grounds-practice-your-spells-1"><span
-class="header-section-number">1.2.4</span> <strong>The Training Grounds:
+class="header-section-number">2.4</span> <strong>The Training Grounds:
 Practice Your Spells</strong></h3>
 <p>Let’s practice making tables for things other than cards.</p>
 <p><strong>Practice #1: The Player Profile</strong></p>
@@ -415,8 +404,8 @@ Potion”), <code>color</code> (“shimmering red”), <code>restores</code>
 <li>Print out a sentence describing the potion using its data, like
 <code>"Greater Health Potion is a shimmering red color and restores 50 health."</code></li>
 </ul>
-<h3 data-number="1.2.5" id="your-quest-reforge-your-creature"><span
-class="header-section-number">1.2.5</span> <strong>Your Quest: Reforge
+<h3 data-number="2.5" id="your-quest-reforge-your-creature"><span
+class="header-section-number">2.5</span> <strong>Your Quest: Reforge
 Your Creature!</strong></h3>
 <p>Time to upgrade your code from Unit 1. Your mission is to “reforge”
 your creature using a table.</p>
@@ -438,9 +427,9 @@ table.</li>
 same as before, but you’ll know that your code is now a hundred times
 more organized!</li>
 </ol>
-<h3 data-number="1.2.6"
+<h3 data-number="2.6"
 id="the-troubleshooting-scroll-when-spells-go-wrong-1"><span
-class="header-section-number">1.2.6</span> <strong>The Troubleshooting
+class="header-section-number">2.6</span> <strong>The Troubleshooting
 Scroll: When Spells Go Wrong</strong></h3>
 <p>Crafting with tables can be tricky at first. Here are some common
 mistakes:</p>
@@ -476,27 +465,27 @@ notation? For example, writing <code>goblin_grunt.attak</code> when the
 key in the table is actually <code>attack</code>.</li>
 </ul></li>
 </ul>
-<h2 data-number="1.3" id="assembling-your-army"><span
-class="header-section-number">1.3</span> <strong>Assembling Your
+<h2 data-number="3" id="assembling-your-army"><span
+class="header-section-number">3</span> <strong>Assembling Your
 Army</strong></h2>
 <hr />
-<h3 data-number="1.3.1" id="the-story-so-far-1"><span
-class="header-section-number">1.3.1</span> <strong>The Story So
+<h3 data-number="3.1" id="the-story-so-far-1"><span
+class="header-section-number">3.1</span> <strong>The Story So
 Far…</strong></h3>
 <p>You’ve successfully crafted the “soul” of a single creature, storing
 all its stats neatly in one table. Your code is clean and organized. But
 a master summoner never relies on a single creature; they command an
 army! It’s time to go from one card to a full deck.</p>
-<h3 data-number="1.3.2"
+<h3 data-number="3.2"
 id="the-mission-what-well-accomplish-today-2"><span
-class="header-section-number">1.3.2</span> <strong>The Mission: What
-We’ll Accomplish Today</strong></h3>
+class="header-section-number">3.2</span> <strong>The Mission: What We’ll
+Accomplish Today</strong></h3>
 <p>Our main goal is to create a deck of cards. By the end, we’ll have a
 program that defines several different cards and bundles them into a
 single “deck” variable. We’ll also take on some challenging side quests
 to make our code even more powerful.</p>
-<h3 data-number="1.3.3" id="the-spellbook-new-tools-well-learn-2"><span
-class="header-section-number">1.3.3</span> <strong>The Spellbook: New
+<h3 data-number="3.3" id="the-spellbook-new-tools-well-learn-2"><span
+class="header-section-number">3.3</span> <strong>The Spellbook: New
 Tools We’ll Learn</strong></h3>
 <p><strong>1. Tables as Lists (The Card Box)</strong></p>
 <p>We’re going to use our trusty <code>table</code> tool in a new way.
@@ -549,8 +538,8 @@ class="sourceCode lua"><code class="sourceCode lua"><span id="cb14-1"><a href="#
 <p>The <code>condition</code> is a question that can be answered with
 <code>true</code> or <code>false</code>, like <code>speed &gt; 5</code>
 or <code>life &lt;= 0</code>. We’ll need this for our next quest.</p>
-<h3 data-number="1.3.4" id="your-quest-assemble-the-deck"><span
-class="header-section-number">1.3.4</span> <strong>Your Quest: Assemble
+<h3 data-number="3.4" id="your-quest-assemble-the-deck"><span
+class="header-section-number">3.4</span> <strong>Your Quest: Assemble
 the Deck!</strong></h3>
 <p>First, let’s get the main part done.</p>
 <p><strong>Instructions:</strong></p>
@@ -567,8 +556,8 @@ display the name of the <em>second</em> card in your deck.</li>
 the total number of cards in the deck.</li>
 </ol>
 <hr />
-<h3 data-number="1.3.5" id="side-quest-1-a-separate-spellbook"><span
-class="header-section-number">1.3.5</span> <strong>Side Quest 1: A
+<h3 data-number="3.5" id="side-quest-1-a-separate-spellbook"><span
+class="header-section-number">3.5</span> <strong>Side Quest 1: A
 Separate Spellbook 📜</strong></h3>
 <p>Your main file is going to get crowded if you define every single
 card there. Let’s move them to their own file!</p>
@@ -589,9 +578,9 @@ file and get the table it <code>return</code>ed.
 <code>lua     -- main.lua     local deck = require("cards")     print("Successfully loaded " .. #deck .. " cards!")     print("The first card is: " .. deck[1].name)</code></li>
 </ol>
 <hr />
-<h3 data-number="1.3.6" id="side-quest-2-the-speed-trial"><span
-class="header-section-number">1.3.6</span> <strong>Side Quest 2: The
-Speed Trial 💨</strong></h3>
+<h3 data-number="3.6" id="side-quest-2-the-speed-trial"><span
+class="header-section-number">3.6</span> <strong>Side Quest 2: The Speed
+Trial 💨</strong></h3>
 <p>Now for a real challenge. Your program needs to figure out which card
 in the deck is the fastest. We don’t know loops yet, so we have to do it
 manually by comparing the cards one by one.</p>
@@ -619,8 +608,8 @@ to be <code>deck[2]</code>.</li>
 <li>Finally, after all the checks, print out the result:
 <code>print("The fastest card is: " .. fastest_card_so_far.name)</code>.</li>
 </ol>
-<h3 data-number="1.3.7" id="the-troubleshooting-scroll"><span
-class="header-section-number">1.3.7</span> <strong>The Troubleshooting
+<h3 data-number="3.7" id="the-troubleshooting-scroll"><span
+class="header-section-number">3.7</span> <strong>The Troubleshooting
 Scroll</strong></h3>
 <ul>
 <li><strong>Error:</strong> <code>... module 'cards' not found:</code>
@@ -650,12 +639,12 @@ after your condition? The correct structure is
 <code>if condition then ... end</code>.</li>
 </ul></li>
 </ul>
-<h2 data-number="1.4" id="automating-your-army"><span
-class="header-section-number">1.4</span> <strong>Automating Your Army
+<h2 data-number="4" id="automating-your-army"><span
+class="header-section-number">4</span> <strong>Automating Your Army
 🔁</strong></h2>
 <hr />
-<h3 data-number="1.4.1" id="the-story-so-far-2"><span
-class="header-section-number">1.4.1</span> <strong>The Story So
+<h3 data-number="4.1" id="the-story-so-far-2"><span
+class="header-section-number">4.1</span> <strong>The Story So
 Far…</strong></h3>
 <p>You’ve assembled a mighty army and organized it into a deck. You even
 figured out how to find the fastest card. But… it was a bit clumsy,
@@ -665,10 +654,10 @@ wasn’t it? You had to write a separate <code>if</code> statement for
 <p>That kind of repetitive work is for computers, not for master
 summoners like you. Today, you’ll learn the automation spell that tells
 the computer: “Do this for every card in the deck!”</p>
-<h3 data-number="1.4.2"
+<h3 data-number="4.2"
 id="the-mission-what-well-accomplish-today-3"><span
-class="header-section-number">1.4.2</span> <strong>The Mission: What
-We’ll Accomplish Today</strong></h3>
+class="header-section-number">4.2</span> <strong>The Mission: What We’ll
+Accomplish Today</strong></h3>
 <p>By the end of this session, you will have upgraded your code with
 <strong>loops</strong>. Your new program will be able to:</p>
 <ol type="1">
@@ -677,8 +666,8 @@ code.</li>
 <li>Find the fastest card in the deck, no matter if there are 3 cards or
 300, using one small, elegant block of code.</li>
 </ol>
-<h3 data-number="1.4.3" id="the-spellbook-new-tools-well-learn-3"><span
-class="header-section-number">1.4.3</span> <strong>The Spellbook: New
+<h3 data-number="4.3" id="the-spellbook-new-tools-well-learn-3"><span
+class="header-section-number">4.3</span> <strong>The Spellbook: New
 Tools We’ll Learn</strong></h3>
 <p><strong>1. <code>for</code> Loops: The Repetition Spell</strong></p>
 <p>A <strong><code>for</code> loop</strong> is a way to repeat a block
@@ -715,8 +704,8 @@ class="sourceCode lua"><code class="sourceCode lua"><span id="cb16-1"><a href="#
 <p>This is much cleaner than writing <code>deck[1]</code>,
 <code>deck[2]</code>, etc., because the loop hands you each card
 automatically!</p>
-<h3 data-number="1.4.4" id="your-quest-the-grand-inspection"><span
-class="header-section-number">1.4.4</span> <strong>Your Quest: The Grand
+<h3 data-number="4.4" id="your-quest-the-grand-inspection"><span
+class="header-section-number">4.4</span> <strong>Your Quest: The Grand
 Inspection</strong></h3>
 <p>Time to put this new power to use and upgrade your old code.</p>
 <p><strong>Part A: Display the Whole Deck</strong></p>
@@ -746,8 +735,8 @@ code should be tiny compared to the old way, but much more
 powerful!</li>
 </ol>
 <hr />
-<h3 data-number="1.4.5" id="side-quest-the-barbarians-rage"><span
-class="header-section-number">1.4.5</span> <strong>Side Quest: The
+<h3 data-number="4.5" id="side-quest-the-barbarians-rage"><span
+class="header-section-number">4.5</span> <strong>Side Quest: The
 Barbarian’s Rage ⚔️</strong></h3>
 <p>Let’s practice the numeric loop with a quick, fun challenge.</p>
 <p><strong>The Task:</strong> A Barbarian character has a ‘Rage’ ability
@@ -755,8 +744,8 @@ that lets him attack 5 times in a row. Write a <strong>numeric
 <code>for</code> loop</strong> that prints “Smash!” to the console 5
 times.</p>
 <hr />
-<h3 data-number="1.4.6" id="the-troubleshooting-scroll-1"><span
-class="header-section-number">1.4.6</span> <strong>The Troubleshooting
+<h3 data-number="4.6" id="the-troubleshooting-scroll-1"><span
+class="header-section-number">4.6</span> <strong>The Troubleshooting
 Scroll</strong></h3>
 <ul>
 <li><p><strong>My loop only runs once, or not at all!</strong></p>
@@ -788,12 +777,12 @@ line should be
 <code>if card.speed &gt; fastest_card_so_far.speed then ...</code>.</li>
 </ul></li>
 </ul>
-<h2 data-number="1.5" id="creating-reusable-spells"><span
-class="header-section-number">1.5</span> <strong>Creating Reusable
-Spells 🪄</strong></h2>
+<h2 data-number="5" id="creating-reusable-spells"><span
+class="header-section-number">5</span> <strong>Creating Reusable Spells
+🪄</strong></h2>
 <hr />
-<h3 data-number="1.5.1" id="the-story-so-far-3"><span
-class="header-section-number">1.5.1</span> <strong>The Story So
+<h3 data-number="5.1" id="the-story-so-far-3"><span
+class="header-section-number">5.1</span> <strong>The Story So
 Far…</strong></h3>
 <p>You’ve become an expert at automation! With <code>for</code> loops,
 you can command your program to inspect an entire army of cards with
@@ -806,10 +795,10 @@ is in another.</p>
 that whole chunk of <code>for</code> loop code. A true master of
 programming never copies and pastes code; they put it in a spellbook to
 be used again and again.</p>
-<h3 data-number="1.5.2"
+<h3 data-number="5.2"
 id="the-mission-what-well-accomplish-today-4"><span
-class="header-section-number">1.5.2</span> <strong>The Mission: What
-We’ll Accomplish Today</strong></h3>
+class="header-section-number">5.2</span> <strong>The Mission: What We’ll
+Accomplish Today</strong></h3>
 <p>Today, we’ll learn how to create <strong>functions</strong>. A
 function is a named, reusable block of code—like a spell in a spellbook.
 Our mission is to clean up our code by turning our existing logic into
@@ -823,8 +812,8 @@ find the fastest card in <em>any</em> deck we give it.</li>
 <li>Use these functions to find the fastest card in both the player’s
 and the computer’s deck.</li>
 </ol>
-<h3 data-number="1.5.3" id="the-spellbook-new-tools-well-learn-4"><span
-class="header-section-number">1.5.3</span> <strong>The Spellbook: New
+<h3 data-number="5.3" id="the-spellbook-new-tools-well-learn-4"><span
+class="header-section-number">5.3</span> <strong>The Spellbook: New
 Tools We’ll Learn</strong></h3>
 <p><strong>1. Defining a Function (Writing the Spell)</strong></p>
 <p>This is how you create a new function, or “spell.” You give it a name
@@ -864,9 +853,9 @@ class="sourceCode lua"><code class="sourceCode lua"><span id="cb19-1"><a href="#
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- Call the function and store the returned value in a variable.</span></span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">sum</span> <span class="op">=</span> add<span class="op">(</span><span class="dv">5</span><span class="op">,</span> <span class="dv">3</span><span class="op">)</span></span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span><span class="op">(</span><span class="va">sum</span><span class="op">)</span> <span class="co">-- Prints 8</span></span></code></pre></div>
-<h3 data-number="1.5.4" id="your-quest-part-a-the-display-charm"><span
-class="header-section-number">1.5.4</span> <strong>Your Quest Part A:
-The Display Charm</strong></h3>
+<h3 data-number="5.4" id="your-quest-part-a-the-display-charm"><span
+class="header-section-number">5.4</span> <strong>Your Quest Part A: The
+Display Charm</strong></h3>
 <p>Let’s turn our card-display logic into a function.</p>
 <p><strong>Instructions:</strong></p>
 <ol type="1">
@@ -888,9 +877,9 @@ function!
 <p>Your program will do the same thing, but your main loop is now much
 cleaner, and you have a reusable tool for displaying any card you
 want.</p>
-<h3 data-number="1.5.5" id="your-quest-part-b-the-seeker-spell"><span
-class="header-section-number">1.5.5</span> <strong>Your Quest Part B:
-The Seeker Spell</strong></h3>
+<h3 data-number="5.5" id="your-quest-part-b-the-seeker-spell"><span
+class="header-section-number">5.5</span> <strong>Your Quest Part B: The
+Seeker Spell</strong></h3>
 <p>This is where the real power becomes clear. We’ll turn our “Speed
 Trial” code into a function and use it on two different decks.</p>
 <p><strong>Instructions:</strong></p>
@@ -926,8 +915,8 @@ class="sourceCode lua"><code class="sourceCode lua"><span id="cb21-1"><a href="#
 <p>Run your code. You just performed a complex analysis on two different
 data sets using a single, reusable spell. This is what programming is
 all about!</p>
-<h3 data-number="1.5.6" id="the-troubleshooting-scroll-2"><span
-class="header-section-number">1.5.6</span> <strong>The Troubleshooting
+<h3 data-number="5.6" id="the-troubleshooting-scroll-2"><span
+class="header-section-number">5.6</span> <strong>The Troubleshooting
 Scroll</strong></h3>
 <ul>
 <li><p><strong>Error:
@@ -956,12 +945,12 @@ you call <code>find_fastest_card</code>, you need to <code>print</code>
 the result that it gave you back.</li>
 </ul></li>
 </ul>
-<h2 data-number="1.6" id="the-random-card-forge"><span
-class="header-section-number">1.6</span> <strong>The Random Card Forge
+<h2 data-number="6" id="the-random-card-forge"><span
+class="header-section-number">6</span> <strong>The Random Card Forge
 🏭</strong></h2>
 <hr />
-<h3 data-number="1.6.1" id="the-story-so-far-4"><span
-class="header-section-number">1.6.1</span> <strong>The Story So
+<h3 data-number="6.1" id="the-story-so-far-4"><span
+class="header-section-number">6.1</span> <strong>The Story So
 Far…</strong></h3>
 <p>You’ve mastered creating reusable spells with functions! Your code is
 clean, organized, and powerful. But you still have to write out every
@@ -971,10 +960,10 @@ predictable.</p>
 own</em>, every time you play? Today, we’re building the heart of the
 game factory: a function that forges brand-new, random cards from
 scratch.</p>
-<h3 data-number="1.6.2"
+<h3 data-number="6.2"
 id="the-mission-what-well-accomplish-today-5"><span
-class="header-section-number">1.6.2</span> <strong>The Mission: What
-We’ll Accomplish Today</strong></h3>
+class="header-section-number">6.2</span> <strong>The Mission: What We’ll
+Accomplish Today</strong></h3>
 <p>Our mission is to build a single, powerful function:
 <code>generate_random_card()</code>. When we call this function, it will
 create and return a complete, unique, and balanced card table.</p>
@@ -987,8 +976,8 @@ create and return a complete, unique, and balanced card table.</p>
 the sum of its life, attack, and speed must not be greater than a set
 number (e.g., 20).</li>
 </ol>
-<h3 data-number="1.6.3" id="the-spellbook-new-tools-well-learn-5"><span
-class="header-section-number">1.6.3</span> <strong>The Spellbook: New
+<h3 data-number="6.3" id="the-spellbook-new-tools-well-learn-5"><span
+class="header-section-number">6.3</span> <strong>The Spellbook: New
 Tools We’ll Learn</strong></h3>
 <p><strong>1. <code>math.random()</code> (The Dice Roll) 🎲</strong></p>
 <p>Lua has a built-in library of math tools called <code>math</code>.
@@ -1026,8 +1015,8 @@ once</em>, and then keep doing it until a specific condition is met.</p>
 <p>The code inside the loop always runs once, then the condition is
 checked at the end.</p>
 <hr />
-<h3 data-number="1.6.4" id="your-quest-the-grand-forging"><span
-class="header-section-number">1.6.4</span> <strong>Your Quest: The Grand
+<h3 data-number="6.4" id="your-quest-the-grand-forging"><span
+class="header-section-number">6.4</span> <strong>Your Quest: The Grand
 Forging</strong></h3>
 <p>We will build our <code>generate_random_card()</code> function
 step-by-step.</p>
@@ -1139,8 +1128,8 @@ the returned card to your <code>random_deck</code>.</li>
 <li>Use your <code>display_card()</code> function from the last unit to
 print out your brand-new, completely unique deck!</li>
 </ol>
-<h3 data-number="1.6.5" id="the-troubleshooting-scroll-3"><span
-class="header-section-number">1.6.5</span> <strong>The Troubleshooting
+<h3 data-number="6.5" id="the-troubleshooting-scroll-3"><span
+class="header-section-number">6.5</span> <strong>The Troubleshooting
 Scroll</strong></h3>
 <ul>
 <li><strong>My program freezes and never finishes!</strong>
@@ -1164,28 +1153,28 @@ random numbers you are generating!</li>
 the second.</li>
 </ul></li>
 </ul>
-<h2 data-number="1.7" id="the-first-clash"><span
-class="header-section-number">1.7</span> <strong>The First Clash!
+<h2 data-number="7" id="the-first-clash"><span
+class="header-section-number">7</span> <strong>The First Clash!
 ⚔️</strong></h2>
 <hr />
-<h3 data-number="1.7.1" id="the-story-so-far-5"><span
-class="header-section-number">1.7.1</span> <strong>The Story So
+<h3 data-number="7.1" id="the-story-so-far-5"><span
+class="header-section-number">7.1</span> <strong>The Story So
 Far…</strong></h3>
 <p>You are a true creator! You’ve built a Card Forge that can generate
 endless unique creatures and functions that can analyze them in an
 instant. All the pieces are on the workshop table. Now, it’s time to put
 them together and spark them to life. It’s time to make two creatures
 meet on the battlefield.</p>
-<h3 data-number="1.7.2"
+<h3 data-number="7.2"
 id="the-mission-what-well-accomplish-today-6"><span
-class="header-section-number">1.7.2</span> <strong>The Mission: What
-We’ll Accomplish Today</strong></h3>
+class="header-section-number">7.2</span> <strong>The Mission: What We’ll
+Accomplish Today</strong></h3>
 <p>Today, we will create the first interactive moment of your game. We
 will write a script that sets up a small skirmish, determines who
 attacks first, and allows a single, dramatic attack to take place, with
 the player making the choice if it’s their turn.</p>
-<h3 data-number="1.7.3" id="the-spellbook-new-tools-well-learn-6"><span
-class="header-section-number">1.7.3</span> <strong>The Spellbook: New
+<h3 data-number="7.3" id="the-spellbook-new-tools-well-learn-6"><span
+class="header-section-number">7.3</span> <strong>The Spellbook: New
 Tools We’ll Learn</strong></h3>
 <p><strong>1. Booleans: <code>true</code> and <code>false</code> (The
 Light Switch)</strong></p>
@@ -1232,8 +1221,8 @@ class="sourceCode lua"><code class="sourceCode lua"><span id="cb31-1"><a href="#
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">choice_number</span> <span class="op">==</span> <span class="dv">1</span> <span class="cf">then</span></span>
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span><span class="op">(</span><span class="st">&quot;You cast Fireball!&quot;</span><span class="op">)</span></span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div>
-<h3 data-number="1.7.4" id="your-quest-the-first-clash"><span
-class="header-section-number">1.7.4</span> <strong>Your Quest: The First
+<h3 data-number="7.4" id="your-quest-the-first-clash"><span
+class="header-section-number">7.4</span> <strong>Your Quest: The First
 Clash!</strong></h3>
 <p>We’ll build this in a single script (<code>main.lua</code>)
 step-by-step.</p>
@@ -1305,8 +1294,8 @@ defeated. Otherwise, print its remaining life.</li>
 </ol>
 <p>And… scene! You’ve just created a fully interactive battle
 sequence.</p>
-<h3 data-number="1.7.5" id="the-troubleshooting-scroll-4"><span
-class="header-section-number">1.7.5</span> <strong>The Troubleshooting
+<h3 data-number="7.5" id="the-troubleshooting-scroll-4"><span
+class="header-section-number">7.5</span> <strong>The Troubleshooting
 Scroll</strong></h3>
 <ul>
 <li><strong>Error: <code>attempt to compare number with nil</code> in my
@@ -1329,22 +1318,22 @@ target.</strong>
 gave an invalid index. For now, just be sure to choose 1, 2, or 3.</li>
 </ul></li>
 </ul>
-<h2 data-number="1.8" id="the-grand-melee"><span
-class="header-section-number">1.8</span> <strong>The Grand Melee
+<h2 data-number="8" id="the-grand-melee"><span
+class="header-section-number">8</span> <strong>The Grand Melee
 💥</strong></h2>
 <hr />
-<h3 data-number="1.8.1" id="the-story-so-far-6"><span
-class="header-section-number">1.8.1</span> <strong>The Story So
+<h3 data-number="8.1" id="the-story-so-far-6"><span
+class="header-section-number">8.1</span> <strong>The Story So
 Far…</strong></h3>
 <p>You created an epic “First Clash” in the last unit! It was the first
 time your game felt truly interactive. But that single attack was just
 the opening move. A real battle is a chaotic melee where every creature
 gets a turn. As we’ll see, making this happen introduces some tricky new
 challenges that will require some clever new tactics to solve.</p>
-<h3 data-number="1.8.2"
+<h3 data-number="8.2"
 id="the-mission-what-well-accomplish-today-7"><span
-class="header-section-number">1.8.2</span> <strong>The Mission: What
-We’ll Accomplish Today</strong></h3>
+class="header-section-number">8.2</span> <strong>The Mission: What We’ll
+Accomplish Today</strong></h3>
 <p>Our mission is to implement a full battle round where all 6 cards on
 the table get to act. The program will: 1. Create two 3-card hands for
 the player and computer. 2. Intelligently determine the correct turn
@@ -1352,8 +1341,8 @@ order, one turn at a time. 3. Allow each living card to attack a living
 opponent. 4. Print the final status of all cards after the battle is
 over.</p>
 <hr />
-<h3 data-number="1.8.3" id="the-new-challenge-who-attacks-next"><span
-class="header-section-number">1.8.3</span> <strong>1. The New Challenge:
+<h3 data-number="8.3" id="the-new-challenge-who-attacks-next"><span
+class="header-section-number">8.3</span> <strong>1. The New Challenge:
 Who Attacks Next?</strong></h3>
 <p>Our old “find the single fastest card” logic is broken now. Why?
 Because in a full round: 1. A card that is defeated before its turn
@@ -1362,8 +1351,8 @@ again in the same round.</p>
 <p>Simply finding the fastest card over and over won’t work. We might
 pick the same card twice, or pick a card that’s already been defeated.
 We need a smarter way to track the state of the whole battlefield.</p>
-<h4 data-number="1.8.3.1" id="our-new-tactic-the-battlefield-list"><span
-class="header-section-number">1.8.3.1</span> <strong>Our New Tactic: The
+<h4 data-number="8.3.1" id="our-new-tactic-the-battlefield-list"><span
+class="header-section-number">8.3.1</span> <strong>Our New Tactic: The
 Battlefield List</strong></h4>
 <p>To solve this, we’ll create <strong>one single list</strong> of all 6
 cards on the battlefield. To avoid losing track of who owns each card,
@@ -1381,16 +1370,16 @@ this:
 <strong>boolean</strong> flag—our “light switch” for tracking who has
 already had their turn this round.</p>
 <hr />
-<h3 data-number="1.8.4"
+<h3 data-number="8.4"
 id="the-targeting-problem-who-can-be-attacked"><span
-class="header-section-number">1.8.4</span> <strong>2. The Targeting
+class="header-section-number">8.4</span> <strong>2. The Targeting
 Problem: Who Can Be Attacked?</strong></h3>
 <p>The second big challenge is that an attacker can’t target a card that
 has already been defeated. The opponent’s hand might have 3 card slots,
 but only one or two might be valid, living targets.</p>
-<h4 data-number="1.8.4.1"
+<h4 data-number="8.4.1"
 id="our-new-tactic-filtering-for-valid-targets"><span
-class="header-section-number">1.8.4.1</span> <strong>Our New Tactic:
+class="header-section-number">8.4.1</span> <strong>Our New Tactic:
 Filtering for Valid Targets</strong></h4>
 <p>This is the perfect place to use a technique called
 <strong>filtering</strong>. Filtering is the simple idea of building a
@@ -1405,8 +1394,8 @@ becomes our list of valid targets for that specific turn.</p>
 cards; it contains shortcuts to the originals. Damaging a card from this
 new list will damage the card in the opponent’s actual hand.</p>
 <hr />
-<h3 data-number="1.8.5" id="your-quest-the-grand-melee"><span
-class="header-section-number">1.8.5</span> <strong>Your Quest: The Grand
+<h3 data-number="8.5" id="your-quest-the-grand-melee"><span
+class="header-section-number">8.5</span> <strong>Your Quest: The Grand
 Melee</strong></h3>
 <p><strong>Step 1: Setup</strong> 1. Generate the
 <code>player_hand</code> and <code>computer_hand</code> with 3 random
@@ -1456,8 +1445,8 @@ the attacker’s turn as complete so they can’t be chosen again:
 Round Over —” message. 2. Loop through the original
 <code>player_hand</code> and <code>computer_hand</code> and display the
 final status of all 6 cards.</p>
-<h3 data-number="1.8.6" id="the-troubleshooting-scroll-5"><span
-class="header-section-number">1.8.6</span> <strong>The Troubleshooting
+<h3 data-number="8.6" id="the-troubleshooting-scroll-5"><span
+class="header-section-number">8.6</span> <strong>The Troubleshooting
 Scroll</strong></h3>
 <ul>
 <li><strong>The same card attacks over and over!</strong>

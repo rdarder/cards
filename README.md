@@ -1,4 +1,6 @@
-# Code & Sorcery: A Lua Card Game Quest
+---
+title: "Code & Sorcery: A Lua Card Game Quest"
+---
 
 ## **Summoning Your First Creature\!**
 
