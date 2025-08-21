@@ -2,17 +2,55 @@
 title: "Code & Sorcery: A Lua Card Game Quest"
 ---
 
-## **Summoning Your First Creature\!**
+## Your Quest Begins
+
+You’ve played a ton of games.
+
+You know that awesome feeling when you draw the perfect card, discover a secret, or finally beat that impossible boss.
+
+But what if the game was **yours**? What if *you* designed the epic creatures? What if *you* made the rules?
+
+That's what this is about.
+
+### The Game We'll Build
+
+Imagine a battlefield. Two or more players, each with a custom deck of cards they’ve brought to the fight. Some cards are fierce **characters**—goblins, knights, and dragons. Others are powerful **magic spells** that can heal your creatures or unleash chaos on your opponents.
+
+Cards will clash, life points will drop, and creatures will be defeated in epic combat, until only one player’s army remains on the field. To be the last one standing is victory.
+
+### The Secret Power
+
+Every game you love is built with a secret ingredient: **code**.
+
+Code is the magic that brings worlds to life. It’s the set of instructions that tells the computer how a monster attacks, what a spell does, or which card is the fastest. Learning to code is like learning to be a wizard. It allows you to create things that, before, only existed in your imagination.
+
+### Our Path
+
+Here's the thing about computers: they are incredibly fast and precise, but they need an absolutely perfect recipe to do anything. A simple game rule that we can understand in a minute can be very tricky to explain to a computer. Our quest is to learn how to be expert translators—to turn our game ideas into a perfect set of instructions the computer can follow.
+
+Here’s how we’ll do it:
+
+* **Start Simple, Then Expand:** We’ll take your grand vision and shrink it down to its tiniest, most fun part—like a single creature attacking another. We'll make that one piece work perfectly. Then, we'll add another piece, and another. It might feel like small steps at first, but you'll be amazed at how quickly what you've done before **compounds**, making each new step faster and easier.
+
+* **Brains First, Looks Second:** We'll begin by building the "brain" of the game. We'll make the rules work and the game playable using a simple text interface. Once the core of our game is solid, we'll begin the next phase of our quest: bringing it all to life with **graphics, animations, and sound**.
+
+We will start from scratch and understand every single step we take. You will go from someone who just *plays* games to someone who *makes* them.
+
+Ready to begin?
+
+Your quest starts now!
+
+## Summoning Your First Creature\!
 
 -----
 
-### **Let's Get Started\!**
+### Let's Get Started\!
 
 Hey\! Welcome to your first step in becoming a game creator. Every huge, amazing game you've ever played started exactly where you are now: with a single line of code.
 
 Our big quest is to build your card game. But before we can have epic battles, we need a creature to fight. So, today's mission is to reach into the digital world and summon our very first creature. We'll decide what it is, what its powers are, and teach the computer how to show it to us.
 
-### **The Mission: What We'll Accomplish Today**
+### The Mission: What We'll Accomplish Today
 
 By the end of this session, we will have a simple program that:
 
@@ -29,7 +67,7 @@ Attack: 2
 Speed: 3
 ```
 
-### **The Spellbook: New Tools We'll Learn**
+### The Spellbook: New Tools We'll Learn
 
 To summon our creature, we need to learn a few basic "spells" in Lua.
 
@@ -89,7 +127,7 @@ Sometimes, you want to write notes in your code to remember what something does.
 local playerHealth = 100 -- Start with full health
 ```
 
-### **The Training Grounds: Practice Your Spells**
+### The Training Grounds: Practice Your Spells
 
 Before we summon the real creature, let's warm up with these small exercises. Try writing them in a separate test file.
 
@@ -105,7 +143,7 @@ Before we summon the real creature, let's warm up with these small exercises. Tr
   * Create a variable for its damage, like `8`.
   * Use `print()` to announce the spell and its power, for example: `Casting Fireball! It does 8 damage!`.
 
-### **Your Quest: Summon the Creature\!**
+### Your Quest: Summon the Creature\!
 
 Alright, you're ready. Your mission is to write a Lua program from scratch that accomplishes our goal.
 
@@ -118,7 +156,7 @@ Alright, you're ready. Your mission is to write a Lua program from scratch that 
 
 Go for it\! I'll be here to help if you get stuck.
 
-### **The Troubleshooting Scroll: When Spells Go Wrong**
+### The Troubleshooting Scroll: When Spells Go Wrong
 
 Even the best wizards mess up a spell sometimes. If your code doesn't run, you'll see an error message. Here are a few common ones and what they mean:
 
@@ -139,11 +177,11 @@ Even the best wizards mess up a spell sometimes. If your code doesn't run, you'l
 
 
 
-## **Crafting the Card's Soul**
+## Crafting the Card's Soul
 
 -----
 
-### **The Story So Far...**
+### The Story So Far...
 
 Awesome work on summoning your first creature\! You taught the computer to remember four different things about it: its name, life, attack, and speed, using four separate variables.
 
@@ -151,16 +189,16 @@ But there's a small problem. In our code, the variable `card_name` has no idea i
 
 Today, we're going to fix that. We're going to give our card a "soul"—a single container that holds all its information together.
 
-### **The Mission: What We'll Accomplish Today**
+### The Mission: What We'll Accomplish Today
 
 By the end of this session, our program will produce the **exact same output as before**, but our code will be much cleaner and smarter. We will:
 
 1.  Learn how to store all of a card's data inside a single variable.
-2.  Rewrite our code from Unit 1 to use this new, organized structure.
+2.  Adapt our code to use this new, organized structure.
 
 The big change isn't what the program *does*, but *how* our code is written. This is a huge step in programming: learning to write clean, organized code.
 
-### **The Spellbook: New Tools We'll Learn**
+### The Spellbook: New Tools We'll Learn
 
 We only need one new, super-powerful tool for this mission.
 
@@ -168,10 +206,9 @@ We only need one new, super-powerful tool for this mission.
 
 Imagine a character sheet for a game. It has labels like "Name," "HP," and "Strength," and next to each label is a value. A **table** in Lua is exactly like that\! It's a master variable that can hold a bunch of other values inside it, each with its own label (which we call a **key**).
 
-Here’s how we turn our four separate variables...
+Here’s how we turn our four separate variables from our original code ... 
 
 ```lua
--- The old way from Unit 1
 local card_name = "Goblin Grunt"
 local card_life = 5
 local card_attack = 2
@@ -209,7 +246,7 @@ print(goblin_grunt.name)  -- This will print "Goblin Grunt"
 print("The creature's attack power is: " .. goblin_grunt.attack)
 ```
 
-### **The Training Grounds: Practice Your Spells**
+### The Training Grounds: Practice Your Spells
 
 Let's practice making tables for things other than cards.
 
@@ -226,9 +263,9 @@ Let's practice making tables for things other than cards.
   * **Bonus concept:** `true` and `false` are a new data type called a **boolean**. They are great for yes/no questions\!
   * Print out a sentence describing the potion using its data, like `"Greater Health Potion is a shimmering red color and restores 50 health."`
 
-### **Your Quest: Reforge Your Creature\!**
+### Your Quest: Reforge Your Creature\!
 
-Time to upgrade your code from Unit 1. Your mission is to "reforge" your creature using a table.
+Time to upgrade your initial code. Your mission is to "reforge" your creature using a table.
 
 **Instructions:**
 
@@ -239,7 +276,7 @@ Time to upgrade your code from Unit 1. Your mission is to "reforge" your creatur
 5.  Go down to your `print()` statements and update them to use **dot notation** to get the information from your new table.
 6.  Run the program. The output on the screen should look exactly the same as before, but you'll know that your code is now a hundred times more organized\!
 
-### **The Troubleshooting Scroll: When Spells Go Wrong**
+### The Troubleshooting Scroll: When Spells Go Wrong
 
 Crafting with tables can be tricky at first. Here are some common mistakes:
 
@@ -258,26 +295,28 @@ Crafting with tables can be tricky at first. Here are some common mistakes:
       * **Meaning:** The table exists, but the **key** you asked for (`attak`) isn't in it. "nil" means "nothing," so you're trying to print nothing.
       * **Check:** Did you misspell the key inside the dot notation? For example, writing `goblin_grunt.attak` when the key in the table is actually `attack`.
 
-## **Assembling Your Army**
+## Assembling Your Army
 
 -----
 
-### **The Story So Far...**
+### The Story So Far...
 
 You've successfully crafted the "soul" of a single creature, storing all its stats neatly in one table. Your code is clean and organized. But a master summoner never relies on a single creature; they command an army\! It's time to go from one card to a full deck.
 
-### **The Mission: What We'll Accomplish Today**
+### The Mission: What We'll Accomplish Today
 
 Our main goal is to create a deck of cards. By the end, we'll have a program that defines several different cards and bundles them into a single "deck" variable. We'll also take on some challenging side quests to make our code even more powerful.
 
-### **The Spellbook: New Tools We'll Learn**
+### The Spellbook: New Tools We'll Learn
 
 **1. Tables as Lists (The Card Box)**
 
 We're going to use our trusty `table` tool in a new way. Instead of using named keys like `name = "..."`, we're just going to put our finished card-tables into a list, separated by commas. Think of it like putting your individual cards into a deck box.
 
+First, we define our individual cards, just like in [Crafting the card's soul](#crafting-the-cards-soul)
+
+
 ```lua
--- First, we define our individual cards, just like in Unit 2
 local goblin = { name = "Goblin Grunt", life = 5, speed = 3, attack = 2 }
 local golem = { name = "Stone Golem", life = 10, speed = 1, attack = 1 }
 local elf = { name = "Swift Elf", life = 3, speed = 5, attack = 3 }
@@ -326,7 +365,7 @@ end
 
 The `condition` is a question that can be answered with `true` or `false`, like `speed > 5` or `life <= 0`. We'll need this for our next quest.
 
-### **Your Quest: Assemble the Deck\!**
+### Your Quest: Assemble the Deck\!
 
 First, let's get the main part done.
 
@@ -339,7 +378,7 @@ First, let's get the main part done.
 
 -----
 
-### **Side Quest 1: A Separate Spellbook 📜**
+### Side Quest 1: A Separate Spellbook 📜
 
 Your main file is going to get crowded if you define every single card there. Let's move them to their own file\!
 
@@ -366,7 +405,7 @@ Your main file is going to get crowded if you define every single card there. Le
 
 -----
 
-### **Side Quest 2: The Speed Trial 💨**
+### Side Quest 2: The Speed Trial 💨
 
 Now for a real challenge. Your program needs to figure out which card in the deck is the fastest. We don't know loops yet, so we have to do it manually by comparing the cards one by one.
 
@@ -382,7 +421,7 @@ You need a variable to keep track of the fastest card you've found *so far*. You
 5.  Repeat this for every card in your deck.
 6.  Finally, after all the checks, print out the result: `print("The fastest card is: " .. fastest_card_so_far.name)`.
 
-### **The Troubleshooting Scroll**
+### The Troubleshooting Scroll
 
   * **Error:** `... module 'cards' not found:`
       * **Meaning:** Your `require("cards")` command couldn't find the file.
@@ -394,24 +433,24 @@ You need a variable to keep track of the fastest card you've found *so far*. You
       * **Meaning:** This is a syntax error in your `if` statement.
       * **Check:** Did you remember to write `then` after your condition? The correct structure is `if condition then ... end`.
 
-## **Automating Your Army 🔁**
+## Automating Your Army 🔁
 
 -----
 
-### **The Story So Far...**
+### The Story So Far...
 
 You've assembled a mighty army and organized it into a deck. You even figured out how to find the fastest card. But... it was a bit clumsy, wasn't it? You had to write a separate `if` statement for `deck[2]`, `deck[3]`, and so on. If your deck had 50 cards, your code would be huge and fragile\!
 
 That kind of repetitive work is for computers, not for master summoners like you. Today, you'll learn the automation spell that tells the computer: "Do this for every card in the deck\!"
 
-### **The Mission: What We'll Accomplish Today**
+### The Mission: What We'll Accomplish Today
 
 By the end of this session, you will have upgraded your code with **loops**. Your new program will be able to:
 
 1.  Display every single card in your deck with just a few lines of code.
 2.  Find the fastest card in the deck, no matter if there are 3 cards or 300, using one small, elegant block of code.
 
-### **The Spellbook: New Tools We'll Learn**
+### The Spellbook: New Tools We'll Learn
 
 **1. `for` Loops: The Repetition Spell**
 
@@ -448,7 +487,7 @@ end
 
 This is much cleaner than writing `deck[1]`, `deck[2]`, etc., because the loop hands you each card automatically\!
 
-### **Your Quest: The Grand Inspection**
+### Your Quest: The Grand Inspection
 
 Time to put this new power to use and upgrade your old code.
 
@@ -469,7 +508,7 @@ Time to put this new power to use and upgrade your old code.
 
 -----
 
-### **Side Quest: The Barbarian's Rage ⚔️**
+### Side Quest: The Barbarian's Rage ⚔️
 
 Let's practice the numeric loop with a quick, fun challenge.
 
@@ -477,7 +516,7 @@ Let's practice the numeric loop with a quick, fun challenge.
 
 -----
 
-### **The Troubleshooting Scroll**
+### The Troubleshooting Scroll
 
   * **My loop only runs once, or not at all\!**
 
@@ -493,17 +532,17 @@ Let's practice the numeric loop with a quick, fun challenge.
       * **Check:** Look at your `if` statement inside the loop. Are you comparing the loop's `card.speed` to the `fastest_card_so_far.speed`? A common mistake is to accidentally compare a card to itself or use the wrong variable. The line should be `if card.speed > fastest_card_so_far.speed then ...`.
 
 
-## **Creating Reusable Spells 🪄**
+## Creating Reusable Spells 🪄
 
 -----
 
-### **The Story So Far...**
+### The Story So Far...
 
 You've become an expert at automation\! With `for` loops, you can command your program to inspect an entire army of cards with just a few lines of code. Your code is powerful, but if you look closely, our main file is becoming a bit of a messy scroll. The logic to display a card is in one place, and the logic to find the fastest card is in another.
 
 What if you wanted to find the fastest card in the player's deck, *and also* in the computer's deck? You'd have to copy and paste that whole chunk of `for` loop code. A true master of programming never copies and pastes code; they put it in a spellbook to be used again and again.
 
-### **The Mission: What We'll Accomplish Today**
+### The Mission: What We'll Accomplish Today
 
 Today, we'll learn how to create **functions**. A function is a named, reusable block of code—like a spell in a spellbook. Our mission is to clean up our code by turning our existing logic into powerful, reusable functions.
 
@@ -513,7 +552,7 @@ By the end of this session, our program will:
 2.  Have a powerful `find_fastest_card()` function that can find the fastest card in *any* deck we give it.
 3.  Use these functions to find the fastest card in both the player's and the computer's deck.
 
-### **The Spellbook: New Tools We'll Learn**
+### The Spellbook: New Tools We'll Learn
 
 **1. Defining a Function (Writing the Spell)**
 
@@ -558,7 +597,7 @@ local sum = add(5, 3)
 print(sum) -- Prints 8
 ```
 
-### **Your Quest Part A: The Display Charm**
+### Your Quest Part A: The Display Charm
 
 Let's turn our card-display logic into a function.
 
@@ -577,7 +616,7 @@ Let's turn our card-display logic into a function.
 
 Your program will do the same thing, but your main loop is now much cleaner, and you have a reusable tool for displaying any card you want.
 
-### **Your Quest Part B: The Seeker Spell**
+### Your Quest Part B: The Seeker Spell
 
 This is where the real power becomes clear. We'll turn our "Speed Trial" code into a function and use it on two different decks.
 
@@ -607,7 +646,7 @@ This is where the real power becomes clear. We'll turn our "Speed Trial" code in
 
 Run your code. You just performed a complex analysis on two different data sets using a single, reusable spell. This is what programming is all about\!
 
-### **The Troubleshooting Scroll**
+### The Troubleshooting Scroll
 
   * **Error: `... attempt to concatenate a nil value (local 'fastest_in_player_deck')`**
 
@@ -622,17 +661,17 @@ Run your code. You just performed a complex analysis on two different data sets 
 
       * **Check:** Remember that some functions just `return` a value; they don't print anything themselves. After you call `find_fastest_card`, you need to `print` the result that it gave you back.
 
-## **The Random Card Forge 🏭**
+## The Random Card Forge 🏭
 
 -----
 
-### **The Story So Far...**
+### The Story So Far...
 
 You've mastered creating reusable spells with functions\! Your code is clean, organized, and powerful. But you still have to write out every single card by hand. This is slow, and it makes your game predictable.
 
 What if your game could create new, surprising cards *on its own*, every time you play? Today, we're building the heart of the game factory: a function that forges brand-new, random cards from scratch.
 
-### **The Mission: What We'll Accomplish Today**
+### The Mission: What We'll Accomplish Today
 
 Our mission is to build a single, powerful function: `generate_random_card()`. When we call this function, it will create and return a complete, unique, and balanced card table.
 
@@ -642,7 +681,7 @@ The generated card will have:
 2.  Random stats for life, attack, and speed.
 3.  **Balanced Stats:** The card will obey a special rule: the sum of its life, attack, and speed must not be greater than a set number (e.g., 20).
 
-### **The Spellbook: New Tools We'll Learn**
+### The Spellbook: New Tools We'll Learn
 
 **1. `math.random()` (The Dice Roll) 🎲**
 
@@ -653,7 +692,7 @@ Lua has a built-in library of math tools called `math`. One of its most fun tool
 
 **2. Picking a Random Item from a List**
 
-This is a classic programming pattern. To get a random item from a list, we get a random index number and use that to pick the item. Remember from Unit 3, the hashtag `#` operator gets the total number of items in a list-like table.
+This is a classic programming pattern. To get a random item from a list, we get a random index number and use that to pick the item. Remember from [Assembling Your Army](#assembling-your-army), the hashtag `#` operator gets the total number of items in a list-like table.
 
 ```lua
 local names = { "Goblin", "Elf", "Golem", "Dragon" }
@@ -677,7 +716,7 @@ The code inside the loop always runs once, then the condition is checked at the 
 
 -----
 
-### **Your Quest: The Grand Forging**
+### Your Quest: The Grand Forging
 
 We will build our `generate_random_card()` function step-by-step.
 
@@ -792,7 +831,7 @@ Now, use your completed function to forge a whole deck\!
 3.  Inside the loop, call `generate_random_card()` and add the returned card to your `random_deck`.
 4.  Use your `display_card()` function from the last unit to print out your brand-new, completely unique deck\!
 
-### **The Troubleshooting Scroll**
+### The Troubleshooting Scroll
 
   * **My program freezes and never finishes\!**
       * **Meaning:** You probably have an **infinite loop**. Your `repeat...until` loop's condition is never becoming true.
@@ -802,19 +841,19 @@ Now, use your completed function to forge a whole deck\!
       * **Check:** Make sure the first number in `math.random(min, max)` is always smaller than or equal to the second.
 
 
-## **The First Clash\! ⚔️**
+## The First Clash\! ⚔️
 
 -----
 
-### **The Story So Far...**
+### The Story So Far...
 
 You are a true creator\! You've built a Card Forge that can generate endless unique creatures and functions that can analyze them in an instant. All the pieces are on the workshop table. Now, it's time to put them together and spark them to life. It's time to make two creatures meet on the battlefield.
 
-### **The Mission: What We'll Accomplish Today**
+### The Mission: What We'll Accomplish Today
 
 Today, we will create the first interactive moment of your game. We will write a script that sets up a small skirmish, determines who attacks first, and allows a single, dramatic attack to take place, with the player making the choice if it's their turn.
 
-### **The Spellbook: New Tools We'll Learn**
+### The Spellbook: New Tools We'll Learn
 
 **1. Booleans: `true` and `false` (The Light Switch)**
 
@@ -860,7 +899,7 @@ if choice_number == 1 then
 end
 ```
 
-### **Your Quest: The First Clash\!**
+### Your Quest: The First Clash\!
 
 We'll build this in a single script (`main.lua`) step-by-step.
 
@@ -906,7 +945,7 @@ This code goes *after* the `if/then/else` block.
 
 And... scene\! You've just created a fully interactive battle sequence.
 
-### **The Troubleshooting Scroll**
+### The Troubleshooting Scroll
 
   * **Error: `attempt to compare number with nil` in my `if` statement.**
       * **Meaning:** This often happens after asking for user input. If the player types "one" instead of "1", `tonumber("one")` results in `nil` (nothing). You can't compare a number to nothing.
@@ -915,15 +954,15 @@ And... scene\! You've just created a fully interactive battle sequence.
       * **Meaning:** You're trying to get `computer_hand[4]`, but there's nothing there, so you get `nil`.
       * **Check:** Your code is working correctly\! The player gave an invalid index. For now, just be sure to choose 1, 2, or 3.
 
-## **The Grand Melee 💥**
+## The Grand Melee 💥
 
 -----
 
-### **The Story So Far...**
+### The Story So Far...
 
 You created an epic "First Clash" in the last unit! It was the first time your game felt truly interactive. But that single attack was just the opening move. A real battle is a chaotic melee where every creature gets a turn. As we'll see, making this happen introduces some tricky new challenges that will require some clever new tactics to solve.
 
-### **The Mission: What We'll Accomplish Today**
+### The Mission: What We'll Accomplish Today
 
 Our mission is to implement a full battle round where all 6 cards on the table get to act. The program will:
 1.  Create two 3-card hands for the player and computer.
@@ -933,7 +972,7 @@ Our mission is to implement a full battle round where all 6 cards on the table g
 
 ---
 
-### **1. The New Challenge: Who Attacks Next?**
+### 1. The New Challenge: Who Attacks Next?
 
 Our old "find the single fastest card" logic is broken now. Why? Because in a full round:
 1.  A card that is defeated before its turn can't attack at all.
@@ -941,7 +980,7 @@ Our old "find the single fastest card" logic is broken now. Why? Because in a fu
 
 Simply finding the fastest card over and over won't work. We might pick the same card twice, or pick a card that's already been defeated. We need a smarter way to track the state of the whole battlefield.
 
-#### **Our New Tactic: The Battlefield List**
+#### Our New Tactic: The Battlefield List
 
 To solve this, we'll create **one single list** of all 6 cards on the battlefield. To avoid losing track of who owns each card, our list will hold small "turn marker" tables.
 
@@ -954,11 +993,11 @@ The `has_attacked = false` is a new **boolean** flag—our "light switch" for tr
 
 ---
 
-### **2. The Targeting Problem: Who Can Be Attacked?**
+### 2. The Targeting Problem: Who Can Be Attacked?
 
 The second big challenge is that an attacker can't target a card that has already been defeated. The opponent's hand might have 3 card slots, but only one or two might be valid, living targets.
 
-#### **Our New Tactic: Filtering for Valid Targets**
+#### Our New Tactic: Filtering for Valid Targets
 
 This is the perfect place to use a technique called **filtering**. Filtering is the simple idea of building a new, temporary list from an old one, but only including the items that match a specific rule.
 
@@ -968,7 +1007,7 @@ Remember our "list of shortcuts" concept: this new `valid_targets` list doesn't 
 
 ---
 
-### **Your Quest: The Grand Melee**
+### Your Quest: The Grand Melee
 
 **Step 1: Setup**
 1.  Generate the `player_hand` and `computer_hand` with 3 random cards each.
@@ -1004,24 +1043,24 @@ We need a loop that will run for each of the 6 "turn slots" in the round. A simp
 1.  After the main `for turn_number = 1, 6 do` loop is finished, print a "--- Round Over ---" message.
 2.  Loop through the original `player_hand` and `computer_hand` and display the final status of all 6 cards.
 
-### **The Troubleshooting Scroll**
+### The Troubleshooting Scroll
 
 * **The same card attacks over and over!**
     * **Check:** You are likely forgetting to update the attacker's state after they attack. Make sure the line `next_attacker_info.has_attacked = true` is running correctly.
 * **The program crashes trying to attack.**
     * **Check:** Are you checking if there are any `valid_targets` before trying to attack? If all opponents are defeated, your `valid_targets` list will be empty, and trying to pick a target (`valid_targets[1]`) will result in `nil`. Make sure your attack logic is inside an `if #valid_targets > 0 then ...` block.
 
-## **The Archetype & The Summoning Spell**
+## The Archetype & The Summoning Spell
 
 -----
 
-### **The Story So Far...**
+### The Story So Far...
 
 You've built an incredible "Grand Melee"\! It's a full, chaotic battle where every card gets a turn, and the logic is smart enough to handle defeated cards correctly. The game feels more real than ever.
 
 But what happens when the dust settles? A real game doesn't just end after one round. The survivors should get ready for the next fight. This brings up some fascinating new problems that will require some truly powerful magic to solve.
 
-### **The Mission: What We'll Accomplish Today**
+### The Mission: What We'll Accomplish Today
 
 Our mission is to build the "post-battle" phase of our game. By the end of this unit, our program will not only run a full melee, but also:
 
@@ -1030,7 +1069,7 @@ Our mission is to build the "post-battle" phase of our game. By the end of this 
 
 -----
 
-### **Quest A: The Damage Report 📜**
+### Quest A: The Damage Report 📜
 
 Let's start by making our end-of-round report more interesting. Instead of just showing a survivor's remaining health, let's also show how much damage they took.
 
@@ -1078,7 +1117,7 @@ Before we build our summoning spell, there's one crucial idea. When we create ou
 
 -----
 
-### **Quest B: Preparing for the Next Round 🔄**
+### Quest B: Preparing for the Next Round 🔄
 
 The battle is over, and the damage report is done. What's next? A new round\! But we can't send these damaged survivors back into the fight. We need fresh ones.
 
@@ -1103,19 +1142,19 @@ This is easy now\! Since each survivor has a "shortcut" back to its perfect arch
 **The Payoff:** You will see a list of only the surviving creatures, all restored to their maximum health, proving they are ready for another fight. This demonstrates the full, powerful lifecycle: **Archetype -\> Summon -\> Damage -\> Use Archetype to Re-Summon**.
 
 
-## **The Sentinel's Shield (Protecting Your Code) 🛡️**
+## The Sentinel's Shield (Protecting Your Code) 🛡️
 
 -----
 
-### **The Story So Far...**
+### The Story So Far...
 
 You've built a truly complex and exciting "Grand Melee"\! But with this complexity comes a new danger. If you change one part of the code, how can you be sure you didn't accidentally break something else? Checking everything by hand after every change is slow and impossible. It's time to build a sentinel—an automated guard for your code.
 
-### **The Mission: What We'll Accomplish Today**
+### The Mission: What We'll Accomplish Today
 
 Our mission is to pause on adding new game features and instead build a "test suite"—a separate script that automatically runs simulations and checks if our game logic behaves exactly as we promise it will. To do this, we'll first learn how to properly organize our code into "libraries" and "scripts."
 
-### **The Spellbook: The Art of Guardianship**
+### The Spellbook: The Art of Guardianship
 
 **1. Libraries vs. Scripts (The Spellbook vs. The Incantation)**
 
@@ -1143,7 +1182,7 @@ This is our simple tool for checking promises. `assert(condition, "message")` is
   * If the `condition` is `true`, it does nothing.
   * If the `condition` is `false`, it stops the program and shouts the error `message`.
 
-### **Your Quest: Forging the Shield**
+### Your Quest: Forging the Shield
 
 **Quest A: The Single-Strike Test**
 Let's start by testing our most important "crown jewel."
@@ -1175,6 +1214,6 @@ Now for the bigger test. To test the entire round, we need to make sure that log
     print("Full melee simulation passed!")
     ```
 
-### **The Payoff**
+### The Payoff
 
 By building this sentinel's shield and organizing your code into libraries and scripts, you've adopted two of the most professional habits in programming. You can now change your game with confidence, knowing your sentinel will instantly warn you if you break one of your core promises.
