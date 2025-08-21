@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>The Random Card Forge 🏭</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 data-number="7" id="the-random-card-forge"><span
+class="header-section-number">7</span> The Random Card Forge 🏭</h1>
+<hr />
+<h2 data-number="7.1" id="the-story-so-far-4"><span
+class="header-section-number">7.1</span> The Story So Far…</h2>
+<p>You’ve mastered creating reusable spells with functions! Your code is
+clean, organized, and powerful. But you still have to write out every
+single card by hand. This is slow, and it makes your game
+predictable.</p>
+<p>What if your game could create new, surprising cards <em>on its
+own</em>, every time you play? Today, we’re building the heart of the
+game factory: a function that forges brand-new, random cards from
+scratch.</p>
+<h2 data-number="7.2"
+id="the-mission-what-well-accomplish-today-5"><span
+class="header-section-number">7.2</span> The Mission: What We’ll
+Accomplish Today</h2>
+<p>Our mission is to build a single, powerful function:
+<code>generate_random_card()</code>. When we call this function, it will
+create and return a complete, unique, and balanced card table.</p>
+<p>The generated card will have:</p>
+<ol type="1">
+<li>A random name, created by combining adjectives and nouns (e.g.,
+“Vengeful Knight”).</li>
+<li>Random stats for life, attack, and speed.</li>
+<li><strong>Balanced Stats:</strong> The card will obey a special rule:
+the sum of its life, attack, and speed must not be greater than a set
+number (e.g., 20).</li>
+</ol>
+<h2 data-number="7.3" id="the-spellbook-new-tools-well-learn-5"><span
+class="header-section-number">7.3</span> The Spellbook: New Tools We’ll
+Learn</h2>
+<p><strong>1. <code>math.random()</code> (The Dice Roll) 🎲</strong></p>
+<p>Lua has a built-in library of math tools called <code>math</code>.
+One of its most fun tools is <code>random()</code>, which works like
+rolling dice.</p>
+<ul>
+<li><code>math.random(max)</code>: Gives you a random whole number
+between 1 and <code>max</code>.</li>
+<li><code>math.random(min, max)</code>: Gives you a random whole number
+between <code>min</code> and <code>max</code>.</li>
+</ul>
+<p><strong>2. Picking a Random Item from a List</strong></p>
+<p>This is a classic programming pattern. To get a random item from a
+list, we get a random index number and use that to pick the item.
+Remember from <a
+href="4-assembling-your-army.html#assembling-your-army">Assembling Your
+Army</a>, the hashtag <code>#</code> operator gets the total number of
+items in a list-like table.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode lua"><code class="sourceCode lua"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">names</span> <span class="op">=</span> <span class="op">{</span> <span class="st">&quot;Goblin&quot;</span><span class="op">,</span> <span class="st">&quot;Elf&quot;</span><span class="op">,</span> <span class="st">&quot;Golem&quot;</span><span class="op">,</span> <span class="st">&quot;Dragon&quot;</span> <span class="op">}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- #names will be 4, so this is like calling math.random(4).</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">random_index</span> <span class="op">=</span> <span class="fu">math.random</span><span class="op">(#</span><span class="va">names</span><span class="op">)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">random_name</span> <span class="op">=</span> <span class="va">names</span><span class="op">[</span><span class="va">random_index</span><span class="op">]</span> <span class="co">-- Pick the item at that index</span></span></code></pre></div>
+<p><strong>3. The <code>repeat...until</code> Loop (The Persistent
+Spell)</strong></p>
+<p>You’ve mastered the <code>for</code> loop, which runs a
+<em>known</em> number of times. A <strong><code>repeat...until</code>
+loop</strong> is for when you need to do something <em>at least
+once</em>, and then keep doing it until a specific condition is met.</p>
+<p><strong>Analogy:</strong> A blacksmith forging a balanced sword.</p>
+<ol type="1">
+<li>“<strong>Repeat</strong> the following steps…”</li>
+<li>“Forge the sword. Hammer it out. Cool it in water.”</li>
+<li>“…<strong>until</strong> the sword is perfectly balanced.”</li>
+</ol>
+<p>The code inside the loop always runs once, then the condition is
+checked at the end.</p>
+<hr />
+<h2 data-number="7.4" id="your-quest-the-grand-forging"><span
+class="header-section-number">7.4</span> Your Quest: The Grand
+Forging</h2>
+<p>We will build our <code>generate_random_card()</code> function
+step-by-step.</p>
+<p><strong>Step 1: The Blueprint &amp; A New Technique</strong></p>
+<p>First, create the basic shell for our function.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode lua"><code class="sourceCode lua"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> generate_random_card<span class="op">()</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- We&#39;ll add more here!</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<p>Inside this function, we need to build a card. But since all the data
+will be random, we can’t create it the way we did before. This brings us
+to a new technique: <strong>building a table piece by
+piece.</strong></p>
+<ol type="1">
+<li><p><strong>Create an empty table:</strong> You can create a table
+with nothing in it. Think of it like a blank character sheet or an empty
+box. <code>local new_card = {}</code></p></li>
+<li><p><strong>Add fields later:</strong> You can add new key-value
+pairs to any table at any time using the dot notation you already
+know.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode lua"><code class="sourceCode lua"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">new_card</span> <span class="op">=</span> <span class="op">{}</span> <span class="co">-- Here&#39;s our empty box.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- Now let&#39;s add a key-value pair to it.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="va">new_card</span><span class="op">.</span><span class="va">name</span> <span class="op">=</span> <span class="st">&quot;Temporary Name&quot;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">-- The table now looks like { name = &quot;Temporary Name&quot; }</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span><span class="op">(</span><span class="va">new_card</span><span class="op">.</span><span class="va">name</span><span class="op">)</span> <span class="co">-- This will print &quot;Temporary Name&quot;</span></span></code></pre></div></li>
+</ol>
+<p>This is the method we’ll use. We’ll start with an empty
+<code>new_card</code> table and add the random <code>name</code>,
+<code>life</code>, <code>attack</code>, and <code>speed</code> to it one
+by one.</p>
+<hr />
+<p><strong>Step 2: The Naming Ceremony</strong></p>
+<p>Let’s start building our card.</p>
+<ol type="1">
+<li>Inside your function, create the empty <code>new_card</code>
+table.</li>
+<li>Create two lists: one with adjectives, one with nouns.</li>
+<li>Use the <code>math.random</code> pattern to pick one word from each
+list and combine them.</li>
+<li>Add the new name to your table using
+<code>new_card.name = ...</code>.</li>
+</ol>
+<blockquote>
+<p><strong>A Quick Detour: Nested vs. Step-by-Step</strong></p>
+<p><strong>The Step-by-Step Way (easier to read):</strong></p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode lua"><code class="sourceCode lua"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">total_adjectives</span> <span class="op">=</span> <span class="op">#</span><span class="va">adjectives</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">random_index</span> <span class="op">=</span> <span class="fu">math.random</span><span class="op">(</span><span class="va">total_adjectives</span><span class="op">)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">random_adjective</span> <span class="op">=</span> <span class="va">adjectives</span><span class="op">[</span><span class="va">random_index</span><span class="op">]</span></span></code></pre></div>
+<p><strong>The Nested Way (a compact shortcut):</strong></p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode lua"><code class="sourceCode lua"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">random_adjective</span> <span class="op">=</span> <span class="va">adjectives</span><span class="op">[</span><span class="fu">math.random</span><span class="op">(#</span><span class="va">adjectives</span><span class="op">)]</span></span></code></pre></div>
+<p>Both ways work the same! You can choose whichever makes more sense to
+you.</p>
+</blockquote>
+<hr />
+<p><strong>Step 3: The Balancing Act</strong></p>
+<p>Now for the stats. We’ll use our new <code>repeat...until</code> loop
+to make sure they are balanced.</p>
+<ol type="1">
+<li>Inside your function, declare local variables for <code>life</code>,
+<code>attack</code>, and <code>speed</code>.</li>
+<li>Create a <code>repeat...until</code> loop.</li>
+<li>Inside the loop, generate a random number for <code>life</code>,
+<code>attack</code>, and <code>speed</code>. Let’s say between 1 and 10
+for each.</li>
+<li>The <code>until</code> condition should check if the sum of the
+stats is less than or equal to your maximum (e.g., 20).</li>
+<li>After the loop finishes, you are guaranteed to have balanced stats.
+Add them to the <code>new_card</code> table.</li>
+</ol>
+<!-- end list -->
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode lua"><code class="sourceCode lua"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- This part goes inside your generate_random_card function</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">life</span><span class="op">,</span> <span class="va">attack</span><span class="op">,</span> <span class="va">speed</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">local</span> <span class="va">max_stats</span> <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">repeat</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">life</span> <span class="op">=</span> <span class="fu">math.random</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">10</span><span class="op">)</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="va">attack</span> <span class="op">=</span> <span class="fu">math.random</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">10</span><span class="op">)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">speed</span> <span class="op">=</span> <span class="fu">math.random</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">8</span><span class="op">)</span> <span class="co">-- Maybe speed is rarer</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="cf">until</span> <span class="va">life</span> <span class="op">+</span> <span class="va">attack</span> <span class="op">+</span> <span class="va">speed</span> <span class="op">&lt;=</span> <span class="va">max_stats</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="va">new_card</span><span class="op">.</span><span class="va">life</span> <span class="op">=</span> <span class="va">life</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="va">new_card</span><span class="op">.</span><span class="va">attack</span> <span class="op">=</span> <span class="va">attack</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="va">new_card</span><span class="op">.</span><span class="va">speed</span> <span class="op">=</span> <span class="va">speed</span></span></code></pre></div>
+<hr />
+<p><strong>Step 4: The Final Product</strong></p>
+<p>At the very end of your function, after you’ve added the name and all
+the stats, make sure you return the finished product.</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode lua"><code class="sourceCode lua"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> generate_random_card<span class="op">()</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> <span class="va">new_card</span> <span class="op">=</span> <span class="op">{}</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">-- ... all the name and stat generation code goes here ...</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="va">new_card</span> <span class="co">-- Send the finished card out!</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<p>Now, use your completed function to forge a whole deck!</p>
+<ol type="1">
+<li>Create an empty table for your new deck:
+<code>local random_deck = {}</code>.</li>
+<li>Write a numeric <code>for</code> loop that runs, say, 12 times.</li>
+<li>Inside the loop, call <code>generate_random_card()</code> and add
+the returned card to your <code>random_deck</code>.</li>
+<li>Use your <code>display_card()</code> function from the last unit to
+print out your brand-new, completely unique deck!</li>
+</ol>
+<h2 data-number="7.5" id="the-troubleshooting-scroll-3"><span
+class="header-section-number">7.5</span> The Troubleshooting Scroll</h2>
+<ul>
+<li><strong>My program freezes and never finishes!</strong>
+<ul>
+<li><strong>Meaning:</strong> You probably have an <strong>infinite
+loop</strong>. Your <code>repeat...until</code> loop’s condition is
+never becoming true.</li>
+<li><strong>Check:</strong> Is your rule possible to achieve? If you
+generate stats from 10-20, their sum can <em>never</em> be less than 20.
+Make sure your <code>max_stats</code> value is high enough for the
+random numbers you are generating!</li>
+</ul></li>
+<li><strong>Error:
+<code>bad argument #2 to 'random' (interval is empty)</code></strong>
+<ul>
+<li><strong>Meaning:</strong> You tried to do
+<code>math.random(min, max)</code> where <code>min</code> is larger than
+<code>max</code>.</li>
+<li><strong>Check:</strong> Make sure the first number in
+<code>math.random(min, max)</code> is always smaller than or equal to
+the second.</li>
+</ul></li>
+</ul>
+<nav id="sitenav">
+<div class="sitenav">
+<span class="navlink next">
+<span class="navlink-label">Next Up:</span> <a href="8-the-first-clash.html" accesskey="n" rel="next">The First Clash! ⚔️</a>
+</span>
+<span class="navlink">
+</span>
+</div>
+<div class="sitenav">
+<span class="navlink top">
+<a href="index.html" accesskey="t" rel="top">Code &amp; Sorcery: A Lua Card Game Quest</a>
+</span>
+</div>
+</nav>
+</body>
+</html>

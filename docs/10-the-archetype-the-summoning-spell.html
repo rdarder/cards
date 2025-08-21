@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>The Archetype &amp; The Summoning Spell</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1 data-number="10" id="the-archetype-the-summoning-spell"><span
+class="header-section-number">10</span> The Archetype &amp; The
+Summoning Spell</h1>
+<hr />
+<h2 data-number="10.1" id="the-story-so-far-7"><span
+class="header-section-number">10.1</span> The Story So Far…</h2>
+<p>You’ve built an incredible “Grand Melee”! It’s a full, chaotic battle
+where every card gets a turn, and the logic is smart enough to handle
+defeated cards correctly. The game feels more real than ever.</p>
+<p>But what happens when the dust settles? A real game doesn’t just end
+after one round. The survivors should get ready for the next fight. This
+brings up some fascinating new problems that will require some truly
+powerful magic to solve.</p>
+<h2 data-number="10.2"
+id="the-mission-what-well-accomplish-today-8"><span
+class="header-section-number">10.2</span> The Mission: What We’ll
+Accomplish Today</h2>
+<p>Our mission is to build the “post-battle” phase of our game. By the
+end of this unit, our program will not only run a full melee, but
+also:</p>
+<ol type="1">
+<li>Provide a detailed “Damage Report” showing how much health each
+surviving card lost.</li>
+<li>Gather the surviving cards and prepare a new, fully-healed hand,
+ready for the next round.</li>
+</ol>
+<hr />
+<h2 data-number="10.3" id="quest-a-the-damage-report"><span
+class="header-section-number">10.3</span> Quest A: The Damage Report
+📜</h2>
+<p>Let’s start by making our end-of-round report more interesting.
+Instead of just showing a survivor’s remaining health, let’s also show
+how much damage they took.</p>
+<p><strong>The Problem:</strong> Wait, we have a problem. When a card is
+attacked, our code does this:
+<code>target.life = target.life - attacker.attack</code>. We are
+changing the <code>life</code> value directly. By the end of the round,
+the original health value is gone forever! How can we possibly calculate
+the damage taken if we don’t remember what the health was at the
+start?</p>
+<p><strong>A New Tactic: Archetypes and Summoned Creatures</strong> To
+solve this, we need to think about our cards in a new way. Let’s decide
+that from now on, there are two forms of every card:</p>
+<ul>
+<li><strong>The Archetype:</strong> This is the card’s perfect, original
+essence. Its <code>life</code> value is its <strong>maximum</strong>
+health. Archetypes are like the master blueprints in a grand
+library—they are never changed or damaged.</li>
+<li><strong>The Summoned Creature:</strong> When a card is brought into
+a battle, it’s a temporary, physical version of its archetype. This is
+the version that takes damage.</li>
+</ul>
+<p>If we do this, we can always look at a damaged, summoned creature and
+compare it to its original archetype to see how much health it has lost.
+But that leads to the next question… how do we create a “Summoned
+Creature” from an “Archetype”?</p>
+<p><strong>The Tool for Summoning: The <code>pairs()</code>
+Loop</strong> We need to make a copy. But writing
+<code>new_card.name = old_card.name</code>,
+<code>new_card.life = old_card.life</code>, etc., for every single stat
+is clumsy. What if we add an “armor” stat later? We’d have to remember
+to update our copy code.</p>
+<p>There’s a better way. We can use a special loop called
+<strong><code>for ... in pairs()</code></strong> that automatically
+visits every key-value pair in a table, no matter what they’re
+named.</p>
+<p><strong>Analogy:</strong> Think of a card’s table as a <strong>magic
+bag of holding</strong>. <code>pairs()</code> is the spell you use to
+pull out every single item from the bag, one by one. For each item, you
+get its label (<code>key</code>, e.g., “speed”) and the item itself
+(<code>value</code>, e.g., 5).</p>
+<p><strong>The Final Piece: Names Point to Things</strong> Before we
+build our summoning spell, there’s one crucial idea. When we create our
+summoned creature, we need it to remember its original archetype. We’ll
+do this by adding a new property:
+<code>summoned_creature.archetype = archetype_card</code>. To understand
+why this works, think of variables as <strong>names that point to
+things</strong>.</p>
+<p><strong>Analogy:</strong> Imagine a single, real-world object, like a
+<strong>cat</strong> 🐈.</p>
+<ul>
+<li>You and your sibling can both have a name for it:
+<code>my_cat</code> and <code>our_pet</code>. Both names point to the
+<em>same cat</em>.</li>
+<li>If you put a hat on the cat using your name for it
+(<code>my_cat.has_hat = true</code>), your sibling sees the change via
+their name (<code>our_pet.has_hat</code> is now also <code>true</code>).
+You changed the <em>thing</em>.</li>
+<li>This is what we’ll do. The <code>summoned_creature.archetype</code>
+name will point to the <em>real, original archetype cat</em>.</li>
+</ul>
+<p><strong>Let’s build the <code>summon()</code> function!</strong></p>
+<ol type="1">
+<li><strong>Create the function:</strong>
+<code>function summon(archetype_card) ... end</code>.</li>
+<li><strong>The Body:</strong> Inside, create an empty table for the
+<code>summoned_creature</code>. Use a
+<code>for key, value in pairs(archetype_card) do ... end</code> loop.
+Inside the loop, copy each property:
+<code>summoned_creature[key] = value</code>.</li>
+<li><strong>The Link:</strong> After the loop, create the link back to
+the original:
+<code>summoned_creature.archetype = archetype_card</code>.</li>
+<li><strong>Return:</strong> <code>return summoned_creature</code>.</li>
+</ol>
+<p><strong>Now, update your game!</strong></p>
+<ol type="1">
+<li>Change your <code>cards.lua</code> or card generation list to be the
+“Codex of Archetypes.”</li>
+<li>When you deal the <code>player_hand</code> and
+<code>computer_hand</code>, use your new <code>summon()</code> function
+to create summoned creatures for the battle.</li>
+<li>Run the Grand Melee logic.</li>
+<li>In the Aftermath step, for each <code>survivor</code>, calculate
+damage:
+<code>local damage_taken = survivor.archetype.life - survivor.life</code>.</li>
+<li>Print the new report:
+<code>print(survivor.name .. " survived with " .. survivor.life .. " HP (" .. damage_taken .. " damage taken).")</code>.</li>
+</ol>
+<hr />
+<h2 data-number="10.4" id="quest-b-preparing-for-the-next-round"><span
+class="header-section-number">10.4</span> Quest B: Preparing for the
+Next Round 🔄</h2>
+<p>The battle is over, and the damage report is done. What’s next? A new
+round! But we can’t send these damaged survivors back into the fight. We
+need fresh ones.</p>
+<p><strong>The Problem:</strong> We have a list of survivors, but they
+are all battle-worn and damaged. How do we prepare a new hand of
+fully-healed creatures for the next round?</p>
+<p><strong>The Solution:</strong> This is easy now! Since each survivor
+has a “shortcut” back to its perfect archetype
+(<code>survivor.archetype</code>), we can simply use that archetype to
+summon a brand-new, fully-healed copy.</p>
+<p><strong>The Task:</strong></p>
+<ol type="1">
+<li>After the “Damage Report” is printed, create a new empty table,
+<code>player_hand_for_next_round</code>.</li>
+<li>Loop through the (damaged) <code>player_hand</code> from the
+battle.</li>
+<li>Inside the loop, for each <code>card</code> that survived
+(<code>card.life &gt; 0</code>), summon a fresh copy from its archetype:
+<code>lua     -- Inside your loop over the survivors...     local fresh_copy = summon(card.archetype)     table.insert(player_hand_for_next_round, fresh_copy)</code></li>
+<li>After the loop, print the contents of
+<code>player_hand_for_next_round</code> using your
+<code>display_card</code> function.</li>
+</ol>
+<p><strong>The Payoff:</strong> You will see a list of only the
+surviving creatures, all restored to their maximum health, proving they
+are ready for another fight. This demonstrates the full, powerful
+lifecycle: <strong>Archetype -&gt; Summon -&gt; Damage -&gt; Use
+Archetype to Re-Summon</strong>.</p>
+<nav id="sitenav">
+<div class="sitenav">
+<span class="navlink next">
+<span class="navlink-label">Next Up:</span> <a href="11-the-sentinels-shield-protecting-your-code.html" accesskey="n" rel="next">The Sentinel’s Shield (Protecting Your Code) 🛡️</a>
+</span>
+<span class="navlink">
+</span>
+</div>
+<div class="sitenav">
+<span class="navlink top">
+<a href="index.html" accesskey="t" rel="top">Code &amp; Sorcery: A Lua Card Game Quest</a>
+</span>
+</div>
+</nav>
+</body>
+</html>
