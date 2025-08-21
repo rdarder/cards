@@ -1,5 +1,12 @@
 #!/bin/bash
-rm -rf docs/*
+set -e
+
+rm -rf docs
+mkdir -p docs
+
+FILES=$(ls -1 *.md)
+
+echo "$FILES"
 
 pandoc \
     --number-sections \
@@ -7,9 +14,9 @@ pandoc \
     -s -c style.css \
     -t chunkedhtml \
     --data-dir=pandoc/ \
-    README.md \
+    $FILES \
     -o docs/book.zip
 
-unzip -d docs docs/book.zip
+unzip -q -d docs docs/book.zip
 cp style.css docs
 rm docs/book.zip
