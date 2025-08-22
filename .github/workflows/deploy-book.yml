@@ -21,8 +21,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build the book
+      - name: Set up pandoc
         uses: docker://pandoc/core:3.5
+
+      - name: Build the book
         run: |
           chmod +x make_html.sh
           ./make_html.sh
