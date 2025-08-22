@@ -24,6 +24,7 @@ jobs:
       - name: build file list
         id: file_list
         run: |
+          mkdir docs
           echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
 
       - name: Set up pandoc
