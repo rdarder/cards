@@ -15,13 +15,17 @@ By the end of this session, you will have upgraded your code with **loops**. You
 1.  Display every single card in your deck with just a few lines of code.
 2.  Find the fastest card in the deck, no matter if there are 3 cards or 300, using one small, elegant block of code.
 
+-----
+
 ### The Spellbook: New Tools We'll Learn
 
-**1. `for` Loops: The Repetition Spell**
+**`for` Loops: The Repetition Spell**
 
 A **`for` loop** is a way to repeat a block of code over and over again. It's one of the most powerful tools a programmer has.
 
-**2. The Numeric `for` Loop (The Countdown)**
+-----
+
+**The Numeric `for` Loop (The Countdown)**
 
 This is the simplest type of loop. You give it a starting number and an ending number, and it runs the code inside for each number in between.
 
@@ -35,11 +39,13 @@ end
 
 Think of `i` as a temporary counter variable that the loop manages for you.
 
-**3. The `ipairs` Loop (The Grand Inspection)**
+-----
+
+**The `ipairs` Loop (The Grand Inspection)**
 
 This is the perfect tool for going through a list, like our deck. The "i" in `ipairs` stands for "index," because it goes through your list in numerical index order (1, 2, 3...).
 
-It gives you two variables for each trip through the loop: the item's position (`index`) and the item itself (`value`).
+It gives you two variables for each trip through the loop: the item's position (`index`) and the item itself (`value`). **Sometimes you'll only need the item's value and not its `index`, and that's perfectly okay.**
 
 ```lua
 -- 'ipairs(deck)' tells the loop we want to inspect the deck.
@@ -51,6 +57,8 @@ end
 ```
 
 This is much cleaner than writing `deck[1]`, `deck[2]`, etc., because the loop hands you each card automatically\!
+
+-----
 
 ### Your Quest: The Grand Inspection
 
@@ -95,5 +103,3 @@ Let's practice the numeric loop with a quick, fun challenge.
   * **In my Speed Trial, the first card always wins.**
 
       * **Check:** Look at your `if` statement inside the loop. Are you comparing the loop's `card.speed` to the `fastest_card_so_far.speed`? A common mistake is to accidentally compare a card to itself or use the wrong variable. The line should be `if card.speed > fastest_card_so_far.speed then ...`.
-
-

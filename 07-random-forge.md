@@ -27,17 +27,23 @@ Lua has a built-in library of math tools called `math`. One of its most fun tool
   * `math.random(max)`: Gives you a random whole number between 1 and `max`.
   * `math.random(min, max)`: Gives you a random whole number between `min` and `max`.
 
-**2. Picking a Random Item from a List**
+**2. Adding to a List: `table.insert()`**
 
-This is a classic programming pattern. To get a random item from a list, we get a random index number and use that to pick the item. Remember from [Assembling Your Army](#assembling-your-army), the hashtag `#` operator gets the total number of items in a list-like table.
+For our final quest, we'll need to start with an empty deck and add new cards to it. Lua gives us a special, clean spell for this: `table.insert`. This function takes two arguments: first the table you want to add to, and second the item you want to add. It automatically puts the new item at the very end of the list.
 
 ```lua
-local names = { "Goblin", "Elf", "Golem", "Dragon" }
+local my_deck = {} -- an empty deck
+local goblin_card = { name = "Goblin" }
+local elf_card = { name = "Elf" }
 
--- #names will be 4, so this is like calling math.random(4).
-local random_index = math.random(#names)
-local random_name = names[random_index] -- Pick the item at that index
+-- Add the goblin card to the deck.
+table.insert(my_deck, goblin_card) -- The deck is now { goblin_card }
+
+-- Add the elf card. It goes to the end.
+table.insert(my_deck, elf_card)    -- The deck is now { goblin_card, elf_card }
 ```
+
+Lua has many of these helpful built-in functions for tables, strings, and more. As you get more curious, you can search online for "Lua table library" to see what other tools are in your spellbook\!
 
 **3. The `repeat...until` Loop (The Persistent Spell)**
 
@@ -67,24 +73,12 @@ function generate_random_card()
 end
 ```
 
-Inside this function, we need to build a card. But since all the data will be random, we can't create it the way we did before. This brings us to a new technique: **building a table piece by piece.**
+Inside this function, we'll use a new technique: **building a table piece by piece.**
 
-1.  **Create an empty table:** You can create a table with nothing in it. Think of it like a blank character sheet or an empty box.
-    `local new_card = {}`
+1.  **Create an empty table:** `local new_card = {}`
+2.  **Add fields later:** `new_card.name = "Temporary Name"`
 
-2.  **Add fields later:** You can add new key-value pairs to any table at any time using the dot notation you already know.
-
-    ```lua
-    local new_card = {} -- Here's our empty box.
-
-    -- Now let's add a key-value pair to it.
-    new_card.name = "Temporary Name"
-
-    -- The table now looks like { name = "Temporary Name" }
-    print(new_card.name) -- This will print "Temporary Name"
-    ```
-
-This is the method we'll use. We'll start with an empty `new_card` table and add the random `name`, `life`, `attack`, and `speed` to it one by one.
+We'll start with an empty `new_card` table and add the random `name`, `life`, `attack`, and `speed` to it one by one.
 
 -----
 
@@ -98,7 +92,6 @@ Let's start building our card.
 4.  Add the new name to your table using `new_card.name = ...`.
 
 > **A Quick Detour: Nested vs. Step-by-Step**
->
 > **The Step-by-Step Way (easier to read):**
 >
 > ```lua
@@ -134,6 +127,12 @@ Now for the stats. We'll use our new `repeat...until` loop to make sure they are
 local life, attack, speed
 local max_stats = 20
 
+-- A quick word: The Value of Nothing (nil)
+-- Notice we wrote `local life, attack, speed` without giving them a value. 
+-- Before the loop starts, these variables hold a special value called `nil`. 
+-- Think of `nil` as meaning "empty" or "nothing yet". 
+-- It's not the number `0` and it's not an empty string `""`—it's just pure nothingness.
+
 repeat
   life = math.random(1, 10)
   attack = math.random(1, 10)
@@ -154,9 +153,7 @@ At the very end of your function, after you've added the name and all the stats,
 ```lua
 function generate_random_card()
   local new_card = {}
-
   -- ... all the name and stat generation code goes here ...
-
   return new_card -- Send the finished card out!
 end
 ```
@@ -165,7 +162,7 @@ Now, use your completed function to forge a whole deck\!
 
 1.  Create an empty table for your new deck: `local random_deck = {}`.
 2.  Write a numeric `for` loop that runs, say, 12 times.
-3.  Inside the loop, call `generate_random_card()` and add the returned card to your `random_deck`.
+3.  Inside the loop, call `generate_random_card()` and use **`table.insert()`** to add the returned card to your `random_deck`.
 4.  Use your `display_card()` function from the last unit to print out your brand-new, completely unique deck\!
 
 ### The Troubleshooting Scroll
@@ -176,5 +173,6 @@ Now, use your completed function to forge a whole deck\!
   * **Error: `bad argument #2 to 'random' (interval is empty)`**
       * **Meaning:** You tried to do `math.random(min, max)` where `min` is larger than `max`.
       * **Check:** Make sure the first number in `math.random(min, max)` is always smaller than or equal to the second.
-
-
+  * **Error: `bad argument #1 to 'insert' (table expected, got nil)`**
+      * **Meaning:** The first thing you gave to `table.insert` was not a table.
+      * **Check:** Did you spell your deck's variable name correctly? The correct format is `table.insert(your_deck_variable, your_card_variable)`.

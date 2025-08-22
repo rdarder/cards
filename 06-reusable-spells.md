@@ -28,7 +28,7 @@ This is how you create a new function, or "spell." You give it a name and tell i
 -- This defines a function called 'shout'.
 -- It takes one parameter, which we'll call 'message'.
 function shout(message)
-  local loud_message = string.upper(message) .. "!!!"
+  local loud_message = message .. "!!!"
   print(loud_message)
 end
 ```
@@ -42,8 +42,8 @@ To use the function, you "call" it by its name and give it the actual data it ne
 ```lua
 -- Here, we call the 'shout' function.
 -- The string "hello" is the argument we pass to the 'message' parameter.
-shout("hello") -- Prints "HELLO!!!"
-shout("I'm learning functions") -- Prints "I'M LEARNING FUNCTIONS!!!"
+shout("hello") -- Prints "hello!!!"
+shout("I'm learning functions") -- Prints "I'm learning functions!!!"
 ```
 
 We wrote the logic once and can now use it on any message we want\!
@@ -70,8 +70,8 @@ Let's turn our card-display logic into a function.
 **Instructions:**
 
 1.  Near the top of your `main.lua` file, define a new function: `function display_card(a_card) ... end`.
-2.  Find your `ipairs` loop that you used to print the deck. **Cut** the `print` statements from inside that loop.
-3.  **Paste** those `print` statements inside your new `display_card` function.
+2.  Find your `ipairs` loop that you used to print the deck. **Cut** the `print` statement from inside that loop.
+3.  **Paste** that `print` statement inside your new `display_card` function.
 4.  **Important:** Change the variable you use inside the function to match the parameter name (e.g., change `card.name` to `a_card.name`).
 5.  Now, go back to your main `ipairs` loop. The inside of the loop should now just be one line of code: a call to your new function\!
     ```lua
@@ -86,9 +86,13 @@ Your program will do the same thing, but your main loop is now much cleaner, and
 
 This is where the real power becomes clear. We'll turn our "Speed Trial" code into a function and use it on two different decks.
 
+**New Technique: Creating Decks from a Master List**
+
+For this quest, we'll need two different decks for our two players. A simple way to do this is to "deal" cards from our master `all_cards` list. Think of it like a real deck of cards: you can create a new hand by taking the 1st card, the 3rd card, and so on. In Lua, we do that by grabbing cards by their index and placing them in a new table.
+
 **Instructions:**
 
-1.  First, let's set up two decks in `main.lua`. Load your master list of cards, and then create two smaller decks from it.
+1.  First, let's set up two decks in `main.lua`. Load your master list of cards, and then create two smaller decks from it using the technique above.
     ```lua
     local all_cards = require("cards")
 
@@ -126,4 +130,3 @@ Run your code. You just performed a complex analysis on two different data sets 
   * **I call my function, but nothing happens.**
 
       * **Check:** Remember that some functions just `return` a value; they don't print anything themselves. After you call `find_fastest_card`, you need to `print` the result that it gave you back.
-

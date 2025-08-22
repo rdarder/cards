@@ -14,9 +14,7 @@ Today, we will create the first interactive moment of your game. We will write a
 
 **1. Booleans: `true` and `false` (The Light Switch)**
 
-So far, we've used two types of data: `numbers` (like 10) and `strings` (like "Hello"). It's time to learn the third major type: the **boolean**.
-
-A boolean is super simple. It can only ever have one of two values: **`true`** or **`false`**. That's it.
+So far, we've used two types of basic data: `numbers` (like 10) and `strings` (like "Hello"). It's time to learn the third major type: the **boolean**. A boolean is super simple. It can only ever have one of two values: **`true`** or **`false`**. That's it.
 
 **Analogy:** Think of a light switch. It can only be on or off. Booleans are perfect for tracking simple states or the answers to yes/no questions. Is the game over? `false`. Is the player hidden? `true`.
 
@@ -27,12 +25,9 @@ local player_has_key = true
 
 **2. Conditionals: `if/then/else` (Making Decisions)**
 
-An **`if` statement** is how you use booleans to make your program smart. It checks if a condition is `true`, and if it is, it runs a block of code.
-
-The "condition" part of an `if` statement always results in a boolean. For example, `player_level > 10` becomes `true` if `player_level` is 12.
+An **`if` statement** is how you use booleans to make your program smart. It checks if a condition is `true`, and if it is, it runs a block of code. For numbers, you have a whole set of comparison tools, like greater than (`>`), less than (`<`), and, as you'll use in this quest, less than or equal to (`<=`).
 
 ```lua
--- We can use a boolean variable directly
 if player_has_key == true then
   print("You unlock the door.")
 else
@@ -40,11 +35,23 @@ else
 end
 ```
 
-**3. User Input: `io.read()` (Listening to the Player)**
+**3. Comparing Values with `==` (Checking for Equality)**
 
-This function makes your program pause and wait for the player to type something and press Enter.
+The `==` spell asks "are these two things equal?". For simple types, it works just like you'd think: `5 == 5` is `true`, but `5 == 10` is `false`.
 
-**Important:** `io.read()` always gives you back a `string`. If you need a number, you have to convert it using `tonumber()`.
+But for tables, `==` works differently. It does **not** check if two tables have the same content; it checks if they are the **exact same table**.
+
+**Analogy:** Imagine you have two identical-looking houses. `house1` and `house2`. Even if they look the same, they are two different buildings. So, `house1 == house2` would be `false`. The `==` spell for tables asks, "Are these two names pointing to the exact same, single object?" This is why in our quest, checking `if card == attacker` works—we're checking if the card from the hand is the *very same card object* we found earlier.
+
+**4. A Spell's Boundaries (Scope)**
+
+Think of a block of code (like the code inside an `if`, `else`, or a `for` loop) as being its own room. When you create a variable inside that room using `local`, it can only be seen and used inside that room. This is called its **scope**.
+
+This is very useful because it means you can name a variable `target` in one function, and someone else can use the same name in another function without them getting mixed up. However, it also means that if you create a variable inside an `if` block, it disappears once the program leaves that block. For our quest, we'll need to declare our `target` variable *outside* the `if/then/else` blocks so it's still around to be used in the final step.
+
+**5. User Input: `io.read()` (Listening to the Player)**
+
+This function makes your program pause and wait for the player to type something and press Enter. **Important:** `io.read()` always gives you back a `string`. If you need a number, you have to convert it using `tonumber()`.
 
 ```lua
 print("Choose a spell (1=Fireball, 2=Ice Lance):")
@@ -74,26 +81,26 @@ We'll build this in a single script (`main.lua`) step-by-step.
 3.  Announce who is attacking: `print(attacker.name .. " has the highest speed and attacks first!")`.
 
 **Step 3: Whose Turn Is It?**
-Now we'll use a boolean to track whose turn it is.
 
-1.  Create a variable `is_player_turn = false`. This is our light switch, and we'll start with it "off".
-2.  Use a `for` loop to go through the `player_hand`. Inside the loop, use an `if` statement to check if the current card is the same as the `attacker`. If it is, flip our switch to on: set `is_player_turn = true`.
+1.  Create a variable `is_player_turn = false`.
+2.  Use a `for` loop to go through the `player_hand`. Inside the loop, use an `if` statement to check if the current card is the same as the `attacker` (`if card == attacker then...`). If it is, set `is_player_turn = true`.
 
 **Step 4: The Attack\!**
-This is where we use our big `if/then/else` brain to check our boolean "switch".
 
-1.  Write an `if is_player_turn == true then ... else ... end` block.
-2.  **Inside the `if` block (Player's Turn):**
+1.  Declare your `target` variable with `local target` so it will be visible after the `if/else` block.
+2.  Write an `if is_player_turn == true then ... else ... end` block.
+3.  **Inside the `if` block (Player's Turn):**
       * Print the computer's cards as a numbered list of targets.
       * Prompt the player to choose a target.
       * Use `io.read()` and `tonumber()` to get their choice.
-      * Set a `target` variable to the chosen card from the `computer_hand`.
-3.  **Inside the `else` block (Computer's Turn):**
-      * Use `math.random(3)` to pick a random target index.
-      * Set the `target` variable to the card from the `player_hand` at that index.
+      * Set the `target` variable to the chosen card from the `computer_hand`.
+4.  **Inside the `else` block (Computer's Turn):**
+      * Use `math.random()` to pick a random target index from the `player_hand`.
+      * Set the `target` variable to the card at that index.
       * Announce who the computer chose to attack.
 
 **Step 5: The Aftermath**
+
 This code goes *after* the `if/then/else` block.
 
 1.  Calculate the new life: `target.life = target.life - attacker.attack`.
@@ -110,4 +117,3 @@ And... scene\! You've just created a fully interactive battle sequence.
   * **The program crashes if I enter a number like 4 or 0 for my target.**
       * **Meaning:** You're trying to get `computer_hand[4]`, but there's nothing there, so you get `nil`.
       * **Check:** Your code is working correctly\! The player gave an invalid index. For now, just be sure to choose 1, 2, or 3.
-

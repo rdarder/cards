@@ -10,7 +10,7 @@ echo "$FILES"
 
 pandoc \
     --number-sections \
-    --toc=true --toc-depth=2 \
+    --toc=true --toc-depth=1 \
     -s -c style.css \
     -t chunkedhtml \
     --data-dir=pandoc/ \
