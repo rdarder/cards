@@ -23,11 +23,19 @@ jobs:
 
       - name: Set up pandoc
         uses: docker://pandoc/core:3.5
+        args: |
+          --number-sections \
+          --toc=true --toc-depth=1 \
+          -s -c style.css \
+          -t chunkedhtml \
+          --data-dir=pandoc/ \
+          *.md \
+          -o docs/book.zip
 
-      - name: Build the book
+      - name: unpack book, add css
         run: |
-          chmod +x make_html.sh
-          ./make_html.sh
+          unzip -q -d docs docs/book.zip
+          cp style.css docs
 
       - name: Upload artifact for deployment
         uses: actions/upload-pages-artifact@v3
