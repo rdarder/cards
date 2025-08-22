@@ -24,13 +24,13 @@ jobs:
       - name: Set up pandoc
         uses: docker://pandoc/core:3.5
         with:
-          args: |
-            --number-sections \
-            --toc=true --toc-depth=1 \
-            -s -c style.css \
-            -t chunkedhtml \
-            --data-dir=pandoc/ \
-            *.md \
+          args: >-
+            --number-sections 
+            --toc=true --toc-depth=1 
+            -s -c style.css 
+            -t chunkedhtml 
+            --data-dir=pandoc/ 
+            *.md 
             -o docs/book.zip
 
       - name: unpack book, add css
