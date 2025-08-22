@@ -21,6 +21,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: build file list
+        id: file_list
+        run: |
+          echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
+
       - name: Set up pandoc
         uses: docker://pandoc/core:3.5
         with:
@@ -30,7 +35,7 @@ jobs:
             -s -c style.css 
             -t chunkedhtml 
             --data-dir=pandoc/ 
-            *.md 
+            ${{ steps.file_list.outputs.files }}
             -o docs/book.zip
 
       - name: unpack book, add css
