@@ -105,6 +105,7 @@ Your main file is going to get crowded if you define every single card there. Le
 1.  Create a **new file** in the same folder and name it `cards.lua`.
 2.  **Cut** your card definitions from `main.lua` and **paste** them into `cards.lua`.
 3.  In `cards.lua`, create a master list of all your cards. At the very end of the file, **return** that list. Your `cards.lua` should look like this:
+
     ```lua
     -- cards.lua
     local goblin = { name = "Goblin Grunt", life = 5, speed = 3, attack = 2 }
@@ -113,7 +114,9 @@ Your main file is going to get crowded if you define every single card there. Le
     local all_cards = { goblin, golem, elf }
     return all_cards
     ```
+
 4.  Now, go back to your **`main.lua`** file. Use a new spell called **`require`** to load the file and get the table it `return`ed.
+
     ```lua
     -- main.lua
     local deck = require("cards")
